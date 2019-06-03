@@ -1,10 +1,15 @@
 package com.utfpr.sghm.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.utfpr.sghm.entidades.Endereco;
+
 
 /* Classe para a implemtnação do CRUD no banco de dados
     C - create
@@ -41,7 +46,7 @@ public class EnderecoController {
             em.getTransaction().begin();
 
             if(!em.contains(endereco)){
-                em.persist(endereco); // Executa atualização no banco de dados
+                em.merge(endereco); // Executa atualização no banco de dados
             }else{
                 throw new Exception("Erro ao atualizar");
             }
@@ -54,15 +59,16 @@ public class EnderecoController {
         }
     }
 
+    
     // funcao para ler uma informação
     // primeiramente vai ser implementado uma função para pesquisar por id
-    public Endereco consultaPorID(int id){
+    public Endereco read(int id){
         EntityManager em = this.getEM();
         Endereco end = null;
 
         try {
             em.getTransaction().begin();
-            end = em.find(Endereco.class, id); // Executa atualização no banco de dados
+            end = em.find(Endereco.class, id); // Executa a procura por ID no banco de dados
             em.getTransaction().commit();
         } catch (Exception e) {
             throw e;
@@ -71,6 +77,25 @@ public class EnderecoController {
         }
 
         return end;
+    }
+
+    //Método de leitura que retorna todas as informações cadastradas
+    public List<Endereco> read(){
+        EntityManager em = this.getEM();
+        List <Endereco> endLista = null;
+        Query findAll = em.createQuery("FROM " + Endereco.class.getName());
+
+        try {
+            em.getTransaction().begin();
+            endLista = findAll.getResultList(); // Executa a procura de todos elementos cadastrados no banco de dados
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            em.close();
+        }
+
+        return endLista;
     }
 
     // funcao para remover
