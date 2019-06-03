@@ -5,15 +5,37 @@
  */
 package com.utfpr.sghm.entidades;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author Jhiovane
  */
-public class Fornecedor {
+
+@Entity
+@Table(name = "FORNECEDOR")
+public class Fornecedor implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="for_id")
+    private int id;
+    @Column(name="for_nome")
     private String nome;
+    @Column(name="for_cnpj")
     private String CNPJ;
+    @Column(name="for_email")
     private String email;
+    @Column(name="for_tel")
     private String telefone;
+    @OneToOne
+    private Endereco endereco;
 
     public Fornecedor() {
     }

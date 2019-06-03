@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="end_id")
+        @Column(name="end_id")
 	private int id;
 	@Column(name="end_rua")
 	private String rua;
