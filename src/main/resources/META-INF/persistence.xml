@@ -5,6 +5,9 @@
     <persistence-unit name="sghm"
         transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        
+        <!-- Não deveriamos colocar as classes aqui!? -->
+        
         <properties>
             
             <!-- Conexão com o banco de dados -->
