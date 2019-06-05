@@ -15,12 +15,12 @@ import javax.persistence.Table;
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-        @Column(name="end_id")
+    @Column(name="end_id")
 	private int id;
 	@Column(name="end_rua")
 	private String rua;
 	@Column(name="end_numero")
-        private int numero;
+    private int numero;
 	@Column(name="end_complemento")
 	private String complemento;
 	@Column(name="end_bairro")

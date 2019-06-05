@@ -5,48 +5,42 @@
  */
 package com.utfpr.sghm.entidades;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-/**
- *
- * @author Jhiovane
- */
 
 @Entity
 @Table(name = "FORNECEDOR")
-public class Fornecedor implements Serializable {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="for_id")
-    private int id;
-    @Column(name="for_nome")
-    private String nome;
-    @Column(name="for_cnpj")
+public class Fornecedor {
+	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="for_cnpj")
     private String CNPJ;
-    @Column(name="for_email")
-    private String email;
-    @Column(name="for_tel")
-    private String telefone;
-    @OneToOne
-    private Endereco endereco;
+	@Column(name="for_nome")	
+	private String nome;
+	@Column(name="for_telefone")    
+	private String telefone;
+	@Column(name="for_email")	
+	private String email;
+	@ManyToOne
+	@Column(name="end_id")//nem precisava, mas só pra manter o padrão..
+	private int end_id;
 
-    public Fornecedor() {
+    public Fornecedor() {}
+
+    public Fornecedor(String nome, String CNPJ, String telefone, String email, int end_id) {
+        this.setNome(nome);
+        this.setCNPJ(CNPJ);
+        this.setEmail(email);
+        this.setTelefone(telefone);
+        this.setEnd_id(end_id);
     }
 
-    public Fornecedor(String nome, String CNPJ, String email, String telefone) {
-        this.nome = nome;
-        this.CNPJ = CNPJ;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
+	//Getters and Setters
     public String getNome() {
         return nome;
     }
@@ -78,4 +72,14 @@ public class Fornecedor implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+	public int getEnd_id() {
+		return end_id;
+	}
+
+	public void setEnd_id(int end_id) {
+		this.end_id = end_id;
+	}
+    
+    
 }
