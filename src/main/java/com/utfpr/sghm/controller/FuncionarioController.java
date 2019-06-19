@@ -1,4 +1,4 @@
-//package com.utfpr.sghm.controller;
+package com.utfpr.sghm.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -63,7 +63,7 @@ public class FuncionarioController {
 
         try {
             em.getTransaction().begin();
-            end = em.find(Funcionario.class, id); // Executa atualização no banco de dados
+            end = em.find(Endereco.class, id); // Executa atualização no banco de dados
             em.getTransaction().commit();
         } catch (Exception e) {
             throw e;
