@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import com.utfpr.sghm.entidades.Funcionario;
 
 /**
  *
@@ -36,35 +37,110 @@ public class FuncionarioTest {
     @After
     public void tearDown() {
     }
+    
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
+                    /*Testando Cargos válidos e inválidos*/
     @Test
-    public void temEndereco() {
+    public void cargoChefe(){
+        Funcionario f = new Funcionario();
+        f.setCargo("chefe");        
+        f.setCNH("11122233300");
+        f.setNome("Anderson Felipe");
         try{
-            //verificar se tem endereco
+            f.validaCampos();
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cargo(){
+    public void cargoGerente() {
+        Funcionario f = new Funcionario();
+        f.setCargo("Gerente");
+        f.setCNH("11122233300");
+        f.setNome("Anderson Felipe");
         try{
-            //verificar qual cargo é
+            f.validaCampos();
+        }catch(Exception e){
+            fail();
         }
-        catch(Exception e){
+    }
+        
+    @Test
+    public void cargoFuncionario(){
+        Funcionario f = new Funcionario();
+        f.setCargo("Funcionario");
+        f.setCNH("11122233300");
+        f.setNome("Anderson Felipe");
+        try{
+            f.validaCampos();
+        }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cnh(){
+    public void cargoInvalido(){
+        Funcionario f = new Funcionario();
+        f.setCargo("Estudante");
+        f.setCNH("11122233300");
         try{
-            //verificar cnh -> apenas 11 numeros
+            f.validaCampos();
         }catch(Exception e){
-            fail();
+            assertEquals(e.getMessage(), "Cargo Inválido");
         }
     }
+    
+    
+                    /*Testando Limites CNH*/
+    @Test
+    public void cnhInferior(){
+        Funcionario f = new Funcionario();
+        f.setCargo("Chefe");
+        f.setCNH("1112223330");
+        try{
+            f.validaCampos();
+        }catch(Exception e){
+            assertEquals(e.getMessage(), "CNH Inválida");
+        }
+    }
+    
+    @Test
+    public void cnhSuperior(){
+        Funcionario f = new Funcionario();
+        f.setCargo("Chefe");
+        f.setCNH("11122233300Z");
+        try{
+            f.validaCampos();
+        }catch(Exception e){
+            assertEquals(e.getMessage(), "CNH Inválida");
+        }
+    }
+    
+    @Test
+    public void cnhCaracterEspecial(){
+        Funcionario f = new Funcionario();
+        f.setCargo("chefe");
+        f.setCNH("111222333xx");
+        f.setNome("Anderson Felipe");
+        try{
+            f.validaCampos();
+        }catch(Exception e){
+            assertEquals(e.getMessage(), "CNH Inválida");
+        }
+    }
+    
+    @Test 
+    public void cnhCorreta(){
+        Funcionario f = new Funcionario();
+        f.setCargo("chefe");
+        f.setCNH("11122233300");
+        f.setNome("Anderson Felipe");
+        try{
+            f.validaCampos(); 
+        }catch(Exception e){
+            fail();
+        } 
+    }
+
 }
