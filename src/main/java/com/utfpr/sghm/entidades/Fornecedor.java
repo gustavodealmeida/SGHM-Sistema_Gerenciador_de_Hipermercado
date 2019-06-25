@@ -73,13 +73,13 @@ public class Fornecedor {
         this.telefone = telefone;
     }
 
-	public int getEnd_id() {
-		return end_id;
-	}
+    public int getEnd_id() {
+	return end_id;
+    }
 
-	public void setEnd_id(int end_id) {
-		this.end_id = end_id;
-	}
+    public void setEnd_id(int end_id) {
+        this.end_id = end_id;
+    }
     
     
 }

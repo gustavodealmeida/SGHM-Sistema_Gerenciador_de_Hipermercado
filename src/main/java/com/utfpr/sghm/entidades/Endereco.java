@@ -1,7 +1,5 @@
 package com.utfpr.sghm.entidades;
 
-import java.security.Identity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
