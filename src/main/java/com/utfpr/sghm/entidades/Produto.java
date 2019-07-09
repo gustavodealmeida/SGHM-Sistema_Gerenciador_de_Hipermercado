@@ -116,5 +116,70 @@ public class Produto {
         this.est_id = est_id;
     }
     
+    public void validaCampos() throws Exception{
+        if(!validaCodBarras())
+            throw new Exception("Código de Barras Inválido");
+        if(!validaNome())
+            throw new Exception("Nome Inválido");
+        if(!validaCategoria())
+            throw new Exception("Categoria Inválida");
+        if(!validaMarca())
+            throw new Exception("Marca Inválida");
+        if(!validaMassa())
+            throw new Exception("Massa Inválida");
+        if(!validaCusto_uni())
+            throw new Exception("Custo da Unidade Inválida");
+        if(!validaPreco())
+            throw new Exception("Preço Inválido");
+    }
     
+    public boolean validaCodBarras(){
+        if(this.getCod_barras().length() > 50 || this.getNome().length() < 5)
+            return false;//Codigo de barras errado
+        if(!this.getCod_barras().matches("[0-9]{1,50}"))
+            return false;//Codigo de barras errado
+        return true;
+    }
+    
+    public boolean validaNome(){
+        if(this.getNome().length() > 100 || this.getNome().length() < 3)
+            return false;//Nome errado
+        if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            return false;//Nome errado
+        return true;
+    }
+    
+    public boolean validaCategoria(){
+        if(this.getCategoria().length() > 100 || this.getNome().length() < 3)
+            return false;//Categoria errada
+        if(!this.getCategoria().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            return false;//Categoria errada
+        return true;
+    }
+    
+    public boolean validaMarca(){
+        if(this.getMarca().length() > 100 || this.getNome().length() < 1)
+            return false;//Categoria errada
+        if(!this.getMarca().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            return false;//Categoria errada
+        return true;
+    }
+    
+    public boolean validaMassa(){
+        if(this.getMassa() < 0.00)
+            return false;//Massa errada
+        return true;
+    }
+    
+    public boolean validaCusto_uni(){
+        if(this.getCusto_uni() < 0.00)
+            return false;//Custo da unidade errada
+        return true;
+    }
+    
+    public boolean validaPreco(){
+        if(this.getPreco() < 0.00)
+            return false;//Preço errado "vedendo" - PINTOOOOOOOOOO, Lucas do Prado (2019)
+        return true;
+    }
 }

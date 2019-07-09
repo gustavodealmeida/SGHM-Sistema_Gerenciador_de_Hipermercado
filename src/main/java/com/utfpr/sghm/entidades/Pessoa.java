@@ -154,7 +154,7 @@ public class Pessoa{
     }
         
     public boolean validaNome(){
-        if(this.getNome().length() > 50 || this.getNome().length() < 3)
+        if(this.getNome().length() > 45 || this.getNome().length() < 3)
             return false;//Nome errado
         if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
             return false;//Nome errado

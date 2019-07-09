@@ -103,5 +103,71 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
+        public void validaCampos() throws Exception{
+        if(!validaRua())
+            throw new Exception("Rua Inválida");
+        if(!validaNumero())
+            throw new Exception("Numero Inválido");
+        if(!validaComplemento())
+            throw new Exception("Complemento Inválido");
+        if(!validaBairro())
+            throw new Exception("Bairro Inválido");
+        if(!validaCidade())
+            throw new Exception("Cidade Inválida");
+        if(!validaEstado())
+            throw new Exception("Estado Inválida");
+        if(!validaCep())
+            throw new Exception("Cep Inválido");
+    }
+        
+	public boolean validaRua(){
+            if(this.getRua().length() > 255 || this.getNome().length() < 5)
+                return false;//Rua errada
+            if(!this.getRua().matches("[a-zA-Z]+ [a-zA-Z]+"))
+                return false;//Rua errada
+        return true;
+        }
+        
+        public boolean validaComplemento(){
+            if(this.getComplemento().length() > 100 || this.getNome().length() < 5)
+                return false;//Complemento errado
+            if(!this.getComplemento().matches("[a-zA-Z]+ [a-zA-Z]+"))
+                return false;//Complemento errado
+        return true;
+        }
+        
+        public boolean validaBairro(){
+            if(this.getBairro().length() > 100 || this.getNome().length() < 5)
+                return false;//bairro errado
+            if(!this.getBairro().matches("[a-zA-Z]+ [a-zA-Z]+"))
+                return false;//bairro errado
+        return true;
+        }
+        
+        public boolean validaCidade(){
+            if(this.getCidade().length() > 100 || this.getNome().length() < 5)
+                return false;//Cidade errada
+            if(!this.getCidade().matches("[a-zA-Z]+ [a-zA-Z]+"))
+                return false;//Cidade errada
+        return true;
+        }
+        
+        public boolean validaNumero(){
+            if(this.getNumero() <= 0)
+                return false;//numero incorreto
+            
+            return true;
+        }
+        
+        public boolean validaEstado(){
+            if(this.getEstado().length() > 100 || this.getNome().length() < 3)
+                return false;//estado errado
+            if(!this.getEstado().matches("[a-zA-Z]+ [a-zA-Z]+"))
+                return false;//estado errado
+        }
+        
+        public boolean validaCep(){
+            if(!this.getCep().matches("[0-9]{8}"))
+                return false;//cep errado
+        }
 }
