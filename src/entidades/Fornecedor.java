@@ -77,15 +77,15 @@ public class Fornecedor {
             throw new Exception("Email Inválido");
         }
         if(!validaTelefone()){
-            throw new Exception("Telefone Inválida");
+            throw new Exception("Telefone Inválido");
         }
     }
     
     public boolean validaNome(){
         if(this.getNome().length() > 100 || this.getNome().length() < 3)
             return false;//Nome errado
-        if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
-            return false;//Nome errado
+        //if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
+          //  return false;//Nome errado
         return true;
     }
     

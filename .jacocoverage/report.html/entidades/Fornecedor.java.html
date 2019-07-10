@@ -15,99 +15,99 @@ public class Fornecedor {
 	
 	private int end_id;
 
-<span class="nc" id="L18">    public Fornecedor() {}</span>
+<span class="fc" id="L18">    public Fornecedor() {}</span>
 
-<span class="nc" id="L20">    public Fornecedor(String nome, String CNPJ, String telefone, String email, int end_id) {</span>
-<span class="nc" id="L21">        this.setNome(nome);</span>
-<span class="nc" id="L22">        this.setCNPJ(CNPJ);</span>
-<span class="nc" id="L23">        this.setEmail(email);</span>
-<span class="nc" id="L24">        this.setTelefone(telefone);</span>
-<span class="nc" id="L25">        this.setEnd_id(end_id);</span>
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L20">    public Fornecedor(String nome, String CNPJ, String telefone, String email, int end_id) {</span>
+<span class="fc" id="L21">        this.setNome(nome);</span>
+<span class="fc" id="L22">        this.setCNPJ(CNPJ);</span>
+<span class="fc" id="L23">        this.setEmail(email);</span>
+<span class="fc" id="L24">        this.setTelefone(telefone);</span>
+<span class="fc" id="L25">        this.setEnd_id(end_id);</span>
+<span class="fc" id="L26">    }</span>
 
 	//Getters and Setters
     public String getNome() {
-<span class="nc" id="L30">        return nome;</span>
+<span class="fc" id="L30">        return nome;</span>
     }
 
     public void setNome(String nome) {
-<span class="nc" id="L34">        this.nome = nome;</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L34">        this.nome = nome;</span>
+<span class="fc" id="L35">    }</span>
 
     public String getCNPJ() {
 <span class="nc" id="L38">        return CNPJ;</span>
     }
 
     public void setCNPJ(String CNPJ) {
-<span class="nc" id="L42">        this.CNPJ = CNPJ;</span>
-<span class="nc" id="L43">    }</span>
+<span class="fc" id="L42">        this.CNPJ = CNPJ;</span>
+<span class="fc" id="L43">    }</span>
 
     public String getEmail() {
-<span class="nc" id="L46">        return email;</span>
+<span class="fc" id="L46">        return email;</span>
     }
 
     public void setEmail(String email) {
-<span class="nc" id="L50">        this.email = email;</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L50">        this.email = email;</span>
+<span class="fc" id="L51">    }</span>
 
     public String getTelefone() {
-<span class="nc" id="L54">        return telefone;</span>
+<span class="fc" id="L54">        return telefone;</span>
     }
 
     public void setTelefone(String telefone) {
-<span class="nc" id="L58">        this.telefone = telefone;</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L58">        this.telefone = telefone;</span>
+<span class="fc" id="L59">    }</span>
 
     public int getEnd_id() {
 <span class="nc" id="L62">	return end_id;</span>
     }
 
     public void setEnd_id(int end_id) {
-<span class="nc" id="L66">        this.end_id = end_id;</span>
-<span class="nc" id="L67">    }</span>
+<span class="fc" id="L66">        this.end_id = end_id;</span>
+<span class="fc" id="L67">    }</span>
     
     public void validaCampos() throws Exception{
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if(!validaNome()){</span>
-<span class="nc" id="L71">            throw new Exception(&quot;Nome Inválido&quot;);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if(!validaNome()){</span>
+<span class="fc" id="L71">            throw new Exception(&quot;Nome Inválido&quot;);</span>
         }
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(!validaCnpj()){</span>
-<span class="nc" id="L74">            throw new Exception(&quot;CNPJ Inválido&quot;);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if(!validaCnpj()){</span>
+<span class="fc" id="L74">            throw new Exception(&quot;CNPJ Inválido&quot;);</span>
         }
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        if(!validaEmail()){</span>
-<span class="nc" id="L77">            throw new Exception(&quot;Email Inválido&quot;);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if(!validaEmail()){</span>
+<span class="fc" id="L77">            throw new Exception(&quot;Email Inválido&quot;);</span>
         }
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        if(!validaTelefone()){</span>
-<span class="nc" id="L80">            throw new Exception(&quot;Telefone Inválida&quot;);</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if(!validaTelefone()){</span>
+<span class="fc" id="L80">            throw new Exception(&quot;Telefone Inválido&quot;);</span>
         }
-<span class="nc" id="L82">    }</span>
+<span class="fc" id="L82">    }</span>
     
     public boolean validaNome(){
-<span class="nc bnc" id="L85" title="All 4 branches missed.">        if(this.getNome().length() &gt; 100 || this.getNome().length() &lt; 3)</span>
-<span class="nc" id="L86">            return false;//Nome errado</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">        if(!this.getNome().matches(&quot;[a-zA-Z]+ [a-zA-Z]+&quot;))</span>
-<span class="nc" id="L88">            return false;//Nome errado</span>
-<span class="nc" id="L89">        return true;</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        if(this.getNome().length() &gt; 100 || this.getNome().length() &lt; 3)</span>
+<span class="fc" id="L86">            return false;//Nome errado</span>
+        //if(!this.getNome().matches(&quot;[a-zA-Z]+ [a-zA-Z]+&quot;))
+          //  return false;//Nome errado
+<span class="fc" id="L89">        return true;</span>
     }
     
     public boolean validaEmail(){
-<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(this.getEmail().matches(&quot;[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}(\\.[a-zA-Z0-9]{2,})+&quot;))</span>
-<span class="nc" id="L94">            return true;</span>
-<span class="nc" id="L95">        return false;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if(this.getEmail().matches(&quot;[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}(\\.[a-zA-Z0-9]{2,})+&quot;))</span>
+<span class="fc" id="L94">            return true;</span>
+<span class="fc" id="L95">        return false;</span>
     }
     
     public boolean validaTelefone(){
-<span class="nc bnc" id="L99" title="All 8 branches missed.">        if(this.getTelefone().matches(&quot;[0-9]+&quot;)&amp;&amp; this.getTelefone().length() == 8 || this.getTelefone().length() == 10 || this.getTelefone().length() == 12 )</span>
-<span class="nc" id="L100">            return true;</span>
-<span class="nc" id="L101">        return false;</span>
+<span class="pc bpc" id="L99" title="3 of 8 branches missed.">        if(this.getTelefone().matches(&quot;[0-9]+&quot;)&amp;&amp; this.getTelefone().length() == 8 || this.getTelefone().length() == 10 || this.getTelefone().length() == 12 )</span>
+<span class="fc" id="L100">            return true;</span>
+<span class="fc" id="L101">        return false;</span>
     }
     
     public boolean validaCnpj(){
-<span class="nc bnc" id="L105" title="All 4 branches missed.">        if (CNPJ.equals(&quot;00000000000000&quot;) || CNPJ.equals(&quot;11111111111111&quot;) ||</span>
-<span class="nc bnc" id="L106" title="All 4 branches missed.">        CNPJ.equals(&quot;22222222222222&quot;) || CNPJ.equals(&quot;33333333333333&quot;) ||</span>
-<span class="nc bnc" id="L107" title="All 4 branches missed.">        CNPJ.equals(&quot;44444444444444&quot;) || CNPJ.equals(&quot;55555555555555&quot;) ||</span>
-<span class="nc bnc" id="L108" title="All 4 branches missed.">        CNPJ.equals(&quot;66666666666666&quot;) || CNPJ.equals(&quot;77777777777777&quot;) ||</span>
-<span class="nc bnc" id="L109" title="All 4 branches missed.">        CNPJ.equals(&quot;88888888888888&quot;) || CNPJ.equals(&quot;99999999999999&quot;) ||</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">       (CNPJ.length() != 14))</span>
+<span class="pc bpc" id="L105" title="2 of 4 branches missed.">        if (CNPJ.equals(&quot;00000000000000&quot;) || CNPJ.equals(&quot;11111111111111&quot;) ||</span>
+<span class="pc bpc" id="L106" title="2 of 4 branches missed.">        CNPJ.equals(&quot;22222222222222&quot;) || CNPJ.equals(&quot;33333333333333&quot;) ||</span>
+<span class="pc bpc" id="L107" title="2 of 4 branches missed.">        CNPJ.equals(&quot;44444444444444&quot;) || CNPJ.equals(&quot;55555555555555&quot;) ||</span>
+<span class="pc bpc" id="L108" title="2 of 4 branches missed.">        CNPJ.equals(&quot;66666666666666&quot;) || CNPJ.equals(&quot;77777777777777&quot;) ||</span>
+<span class="pc bpc" id="L109" title="2 of 4 branches missed.">        CNPJ.equals(&quot;88888888888888&quot;) || CNPJ.equals(&quot;99999999999999&quot;) ||</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">       (CNPJ.length() != 14))</span>
 <span class="nc" id="L111">       return(false);</span>
  
     char dig13, dig14;
@@ -116,44 +116,44 @@ public class Fornecedor {
 // &quot;try&quot; - protege o código para eventuais erros de conversao de tipo (int)
     try {
 // Calculo do 1o. Digito Verificador
-<span class="nc" id="L119">      sm = 0;</span>
-<span class="nc" id="L120">      peso = 2;</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">      for (i=11; i&gt;=0; i--) {</span>
+<span class="fc" id="L119">      sm = 0;</span>
+<span class="fc" id="L120">      peso = 2;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">      for (i=11; i&gt;=0; i--) {</span>
 // converte o i-ésimo caractere do CNPJ em um número:
 // por exemplo, transforma o caractere '0' no inteiro 0
 // (48 eh a posição de '0' na tabela ASCII)
-<span class="nc" id="L125">        num = (int)(CNPJ.charAt(i) - 48);</span>
-<span class="nc" id="L126">        sm = sm + (num * peso);</span>
-<span class="nc" id="L127">        peso = peso + 1;</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">        if (peso == 10)</span>
-<span class="nc" id="L129">           peso = 2;</span>
+<span class="fc" id="L125">        num = (int)(CNPJ.charAt(i) - 48);</span>
+<span class="fc" id="L126">        sm = sm + (num * peso);</span>
+<span class="fc" id="L127">        peso = peso + 1;</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (peso == 10)</span>
+<span class="fc" id="L129">           peso = 2;</span>
       }
  
-<span class="nc" id="L132">      r = sm % 11;</span>
-<span class="nc bnc" id="L133" title="All 4 branches missed.">      if ((r == 0) || (r == 1))</span>
+<span class="fc" id="L132">      r = sm % 11;</span>
+<span class="pc bpc" id="L133" title="2 of 4 branches missed.">      if ((r == 0) || (r == 1))</span>
 <span class="nc" id="L134">         dig13 = '0';</span>
-<span class="nc" id="L135">      else dig13 = (char)((11-r) + 48);</span>
+<span class="fc" id="L135">      else dig13 = (char)((11-r) + 48);</span>
  
 // Calculo do 2o. Digito Verificador
-<span class="nc" id="L138">      sm = 0;</span>
-<span class="nc" id="L139">      peso = 2;</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">      for (i=12; i&gt;=0; i--) {</span>
-<span class="nc" id="L141">        num = (int)(CNPJ.charAt(i)- 48);</span>
-<span class="nc" id="L142">        sm = sm + (num * peso);</span>
-<span class="nc" id="L143">        peso = peso + 1;</span>
-<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (peso == 10)</span>
-<span class="nc" id="L145">           peso = 2;</span>
+<span class="fc" id="L138">      sm = 0;</span>
+<span class="fc" id="L139">      peso = 2;</span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">      for (i=12; i&gt;=0; i--) {</span>
+<span class="fc" id="L141">        num = (int)(CNPJ.charAt(i)- 48);</span>
+<span class="fc" id="L142">        sm = sm + (num * peso);</span>
+<span class="fc" id="L143">        peso = peso + 1;</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (peso == 10)</span>
+<span class="fc" id="L145">           peso = 2;</span>
       }
  
-<span class="nc" id="L148">      r = sm % 11;</span>
-<span class="nc bnc" id="L149" title="All 4 branches missed.">      if ((r == 0) || (r == 1))</span>
+<span class="fc" id="L148">      r = sm % 11;</span>
+<span class="pc bpc" id="L149" title="2 of 4 branches missed.">      if ((r == 0) || (r == 1))</span>
 <span class="nc" id="L150">         dig14 = '0';</span>
-<span class="nc" id="L151">      else dig14 = (char)((11-r) + 48);</span>
+<span class="fc" id="L151">      else dig14 = (char)((11-r) + 48);</span>
  
 // Verifica se os dígitos calculados conferem com os dígitos informados.
-<span class="nc bnc" id="L154" title="All 4 branches missed.">      if ((dig13 == CNPJ.charAt(12)) &amp;&amp; (dig14 == CNPJ.charAt(13)))</span>
-<span class="nc" id="L155">         return(true);</span>
-<span class="nc" id="L156">      else return(false);</span>
+<span class="pc bpc" id="L154" title="1 of 4 branches missed.">      if ((dig13 == CNPJ.charAt(12)) &amp;&amp; (dig14 == CNPJ.charAt(13)))</span>
+<span class="fc" id="L155">         return(true);</span>
+<span class="fc" id="L156">      else return(false);</span>
 <span class="nc" id="L157">    } catch (InputMismatchException erro) {</span>
 <span class="nc" id="L158">        return(false);</span>
     }
@@ -161,9 +161,9 @@ public class Fornecedor {
  
   public static String imprimeCNPJ(String CNPJ) {
 // máscara do CNPJ: 99.999.999.9999-99
-<span class="nc" id="L164">    return(CNPJ.substring(0, 2) + &quot;.&quot; + CNPJ.substring(2, 5) + &quot;.&quot; +</span>
-<span class="nc" id="L165">      CNPJ.substring(5, 8) + &quot;.&quot; + CNPJ.substring(8, 12) + &quot;-&quot; +</span>
-<span class="nc" id="L166">      CNPJ.substring(12, 14));</span>
+<span class="fc" id="L164">    return(CNPJ.substring(0, 2) + &quot;.&quot; + CNPJ.substring(2, 5) + &quot;.&quot; +</span>
+<span class="fc" id="L165">      CNPJ.substring(5, 8) + &quot;.&quot; + CNPJ.substring(8, 12) + &quot;-&quot; +</span>
+<span class="fc" id="L166">      CNPJ.substring(12, 14));</span>
   }
  }
 
