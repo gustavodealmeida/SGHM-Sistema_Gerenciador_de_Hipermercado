@@ -18,6 +18,10 @@ public class Venda {
         this.setCliente_cpf(cliente_cpf);
         this.setData();
     }
+    
+    public Venda() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public void setCod_barras(String cod_barras) {
         this.cod_barras = cod_barras;
