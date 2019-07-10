@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Endereco.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SGHM&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">entidades</a> &gt; <span class="el_source">Endereco.java</span></div><h1>Endereco.java</h1><pre class="source lang-java linenums">package entidades;
+
+public class Endereco {
+	
+	private int id;
+	
+	private String rua;
+	
+        private int numero;
+	
+	private String complemento;
+	
+	private String bairro;
+	
+	private String cidade;
+	
+	private String estado;
+	
+	private String cep;
+    
+    //Método construtor
+<span class="fc" id="L22">    public Endereco(){}</span>
+    
+    //Construtor com polimorfismo
+    public Endereco(String rua, int numero, String complemento, String bairro, String cidade,
+<span class="fc" id="L26">			String estado, String cep) {</span>
+			
+<span class="fc" id="L28">			this.setRua(rua);</span>
+<span class="fc" id="L29">			this.setNumero(numero);</span>
+<span class="fc" id="L30">			this.setComplemento(complemento);</span>
+<span class="fc" id="L31">			this.setBairro(bairro);</span>
+<span class="fc" id="L32">			this.setCidade(cidade);</span>
+<span class="fc" id="L33">			this.setEstado(estado);</span>
+<span class="fc" id="L34">			this.setCep(cep);</span>
+<span class="fc" id="L35">	}</span>
+	
+	
+	//Getters e Setters
+	public int getId() {
+<span class="nc" id="L40">		return id;</span>
+	}
+	public void setId(int id) {
+<span class="nc" id="L43">		this.id = id;</span>
+<span class="nc" id="L44">	}</span>
+
+	public String getRua() {
+<span class="fc" id="L47">		return rua;</span>
+	}
+	public void setRua(String rua) {
+<span class="fc" id="L50">		this.rua = rua;</span>
+<span class="fc" id="L51">	}</span>
+
+	public int getNumero() {
+<span class="fc" id="L54">		return numero;</span>
+	}
+	public void setNumero(int numero) {
+<span class="fc" id="L57">		this.numero = numero;</span>
+<span class="fc" id="L58">	}</span>
+
+	public String getComplemento() {
+<span class="fc" id="L61">		return complemento;</span>
+	}
+	public void setComplemento(String complemento) {
+<span class="fc" id="L64">		this.complemento = complemento;</span>
+<span class="fc" id="L65">	}</span>
+
+	public String getBairro() {
+<span class="fc" id="L68">		return bairro;</span>
+	}
+	public void setBairro(String bairro) {
+<span class="fc" id="L71">		this.bairro = bairro;</span>
+<span class="fc" id="L72">	}</span>
+
+	public String getCidade() {
+<span class="fc" id="L75">		return cidade;</span>
+	}
+	public void setCidade(String cidade) {
+<span class="fc" id="L78">		this.cidade = cidade;</span>
+<span class="fc" id="L79">	}</span>
+
+	public String getEstado() {
+<span class="fc" id="L82">		return estado;</span>
+	}
+	public void setEstado(String estado) {
+<span class="fc" id="L85">		this.estado = estado;</span>
+<span class="fc" id="L86">	}</span>
+
+	public String getCep() {
+<span class="fc" id="L89">		return cep;</span>
+	}
+	public void setCep(String cep) {
+<span class="fc" id="L92">		this.cep = cep;</span>
+<span class="fc" id="L93">	}</span>
+        public void validaCampos() throws Exception{
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if(!validaRua())</span>
+<span class="fc" id="L96">            throw new Exception(&quot;Rua Inválida&quot;);</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if(!validaNumero())</span>
+<span class="fc" id="L98">            throw new Exception(&quot;Número Inválido&quot;);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if(!validaComplemento())</span>
+<span class="fc" id="L100">            throw new Exception(&quot;Complemento Inválido&quot;);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if(!validaBairro())</span>
+<span class="fc" id="L102">            throw new Exception(&quot;Bairro Inválido&quot;);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if(!validaCidade())</span>
+<span class="fc" id="L104">            throw new Exception(&quot;Cidade Inválida&quot;);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if(!validaEstado())</span>
+<span class="fc" id="L106">            throw new Exception(&quot;Estado Inválido&quot;);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if(!validaCep())</span>
+<span class="fc" id="L108">            throw new Exception(&quot;Cep Inválido&quot;);</span>
+<span class="fc" id="L109">    }</span>
+        
+	public boolean validaRua(){
+<span class="pc bpc" id="L112" title="1 of 4 branches missed.">            if(this.getRua().length() &gt; 255 || this.getRua().length() &lt; 5)</span>
+<span class="fc" id="L113">                return false;//Rua errada</span>
+            //if(!this.getRua().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
+                //return false;//Rua errada
+<span class="fc" id="L116">        return true;</span>
+        }
+        
+        public boolean validaComplemento(){
+<span class="pc bpc" id="L120" title="1 of 4 branches missed.">            if(this.getComplemento().length() &gt; 100 || this.getComplemento().length() &lt; 5)</span>
+<span class="fc" id="L121">                return false;//Complemento errado</span>
+            //if(!this.getComplemento().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
+               // return false;//Complemento errado
+<span class="fc" id="L124">        return true;</span>
+        }
+        
+        public boolean validaBairro(){
+<span class="pc bpc" id="L128" title="1 of 4 branches missed.">            if(this.getBairro().length() &gt; 100 || this.getBairro().length() &lt; 5)</span>
+<span class="fc" id="L129">                return false;//bairro errado</span>
+            //if(!this.getBairro().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
+                //return false;//bairro errado
+<span class="fc" id="L132">        return true;</span>
+        }
+        
+        public boolean validaCidade(){
+<span class="pc bpc" id="L136" title="1 of 4 branches missed.">            if(this.getCidade().length() &gt; 100 || this.getCidade().length() &lt; 5)</span>
+<span class="fc" id="L137">                return false;//Cidade errada</span>
+            //if(!this.getCidade().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
+                //return false;//Cidade errada
+<span class="fc" id="L140">        return true;</span>
+        }
+        
+        public boolean validaNumero(){
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if(this.getNumero() &lt;= 0)</span>
+<span class="fc" id="L145">                return false;//numero incorreto</span>
+            
+<span class="fc" id="L147">            return true;</span>
+        }
+        
+        public boolean validaEstado(){
+<span class="pc bpc" id="L151" title="1 of 4 branches missed.">            if(this.getEstado().length() &gt; 100 || this.getEstado().length() &lt; 3)</span>
+<span class="fc" id="L152">                return false;//estado errado</span>
+            //if(!this.getEstado().matches(&quot;[a-zA-Z0]+([' ']?[a-zA-Z]+)*&quot;))
+                //return false;//estado errado
+            
+<span class="fc" id="L156">            return true;</span>
+        }
+        
+        public boolean validaCep(){
+<span class="fc bfc" id="L160" title="All 2 branches covered.">            if(!this.getCep().matches(&quot;[0-9]{8}&quot;))</span>
+<span class="fc" id="L161">                return false;//cep errado</span>
+           
+<span class="fc" id="L163">            return true;</span>
+        }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

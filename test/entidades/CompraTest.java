@@ -5,7 +5,7 @@
  */
 package entidades;
 
-import entidades.Venda;
+import entidades.Compra;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,8 +14,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class VendaTest {
-    public VendaTest() {
+public class CompraTest {
+    public CompraTest() {
     }
     
     @BeforeClass
@@ -36,7 +36,7 @@ public class VendaTest {
     
     @Test
     public void cod_barrasMenor(){
-        Venda v = new Venda();
+        Compra v = new Compra();
         
         v.setCod_barras("");
         
@@ -50,7 +50,7 @@ public class VendaTest {
     
     @Test
     public void cod_barrasMaior(){
-        Venda v = new Venda();
+        Compra v = new Compra();
         
         v.setCod_barras("11111111111111111111" +
                         "11111111111111111111" +
@@ -66,7 +66,7 @@ public class VendaTest {
     
     @Test
     public void cod_barrasLimiteInferior(){
-        Venda v = new Venda();
+        Compra v = new Compra();
         
         v.setCod_barras("1");
         
@@ -80,7 +80,7 @@ public class VendaTest {
 
     @Test
     public void cod_barrasLimiteSuperior(){
-        Venda v = new Venda();
+        Compra v = new Compra();
         
         v.setCod_barras("11111111111111111" +
                         "11111111111111111" +
@@ -95,194 +95,182 @@ public class VendaTest {
     }
     
     @Test
-    public void func_cpfValido(){
-        Venda v = new Venda();
+    public void cnpjValido(){
+        Compra v = new Compra();
         
-        v.setFunc_cpf("08530549910");
+        v.setCnpj("42195745000101");
             
         try{
-            assertTrue(v.validaFunc_Cpf());
+            assertTrue(v.validaCnpj());
         }catch(Exception e){
             fail();
         }        
     }
     
     @Test
-    public void func_cpfInvalido(){
-        Venda v = new Venda();
+    public void cnpjInvalido(){
+        Compra v = new Compra();
         
-        v.setFunc_cpf("58582468524");
-        
-        try{
-            assertFalse(v.validaFunc_Cpf());
-        }catch(Exception e){
-            fail();
-        }
-    }
-    @Test
-    public void cliente_cpfValido(){
-        Venda v = new Venda();
-        
-        v.setCliente_cpf("08530549910");
-            
-        try{
-            assertTrue(v.validaCliente_Cpf());
-        }catch(Exception e){
-            fail();
-        }        
-    }
-    
-    @Test
-    public void cliente_cpfInvalido(){
-        Venda v = new Venda();
-        
-        v.setCliente_cpf("58582468524");
+        v.setCnpj("5858246852354");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfValido(){
-        Venda v = new Venda();
+    public void quantidadeValida(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("33062953020");
+        v.setQtd(5874);
         
         try{
-            assertTrue(v.validaCliente_Cpf());
+            assertTrue(v.validaQtd());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido0(){
-        Venda v = new Venda();
+    public void quantidadeInvalida(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("00000000000");
+        v.setQtd(-2481);
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaQtd());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido1(){
-        Venda v = new Venda();
+    public void cnpjInvalido0(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("11111111111");
+        v.setCnpj("00000000000000");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido2(){
-        Venda v = new Venda();
+    public void cnpjInvalido1(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("22222222222");
+        v.setCnpj("11111111111111");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido3(){
-        Venda v = new Venda();
+    public void cnpjInvalido2(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("3333333333");
+        v.setCnpj("22222222222222");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido4(){
-        Venda v = new Venda();
+    public void cnpjInvalido3(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("44444444444");
+        v.setCnpj("33333333333333");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido5(){
-        Venda v = new Venda();
+    public void cnpjInvalido4(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("55555555555");
+        v.setCnpj("44444444444444");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido6(){
-        Venda v = new Venda();
+    public void cnpjInvalido5(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("66666666666");
+        v.setCnpj("55555555555555");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido7(){
-        Venda v = new Venda();
+    public void cnpjInvalido6(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("77777777777");
+        v.setCnpj("66666666666666");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido8(){
-        Venda v = new Venda();
+    public void cnpjInvalido7(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("88888888888");
+        v.setCnpj("77777777777777");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void cpfInvalido9(){
-        Venda v = new Venda();
+    public void cnpjInvalido8(){
+        Compra v = new Compra();
         
-        v.setCliente_cpf("99999999999");
+        v.setCnpj("88888888888888");
         
         try{
-            assertFalse(v.validaCliente_Cpf());
+            assertFalse(v.validaCnpj());
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
+    public void cnpjInvalido9(){
+        Compra v = new Compra();
+        
+        v.setCnpj("99999999999999");
+        
+        try{
+            assertFalse(v.validaCnpj());
         }catch(Exception e){
             fail();
         }
@@ -290,13 +278,14 @@ public class VendaTest {
     
     @Test
     public void construtor(){
-        Venda v = new Venda("211157785", "08530549910", "39315343085");
+        Compra v = new Compra("211157785", "42195745000101", 57457568);
         
         try{
             v.setData();
             Date d = v.getData();
+            int q = v.getQtd();
         }catch(Exception e){
             fail();
         }
-    }
+    }    
 }

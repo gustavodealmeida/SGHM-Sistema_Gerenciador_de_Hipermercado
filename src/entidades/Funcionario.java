@@ -42,9 +42,9 @@ public class Funcionario extends Pessoa{
         return this.cnh;
     }
 
-    public void venderProduto(){}
+    //public void venderProduto(){}
 
-    public void cadastrarCliente(){}
+    //public void cadastrarCliente(){}
 
     
                 ////Validações*/
