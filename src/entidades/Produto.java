@@ -120,8 +120,6 @@ public class Produto {
     }
     
     public boolean validaCodBarras(){
-        if(this.getCod_barras().length() > 50 || this.getNome().length() < 5)
-            return false;//Codigo de barras errado
         if(!this.getCod_barras().matches("[0-9]{1,50}"))
             return false;//Codigo de barras errado
         return true;
@@ -136,7 +134,7 @@ public class Produto {
     }
     
     public boolean validaCategoria(){
-        if(this.getCategoria().length() > 100 || this.getNome().length() < 3)
+        if(this.getCategoria().length() > 100 || this.getCategoria().length() < 3)
             return false;//Categoria errada
         //if(!this.getCategoria().matches("[a-zA-Z]+ [a-zA-Z]+"))
             //return false;//Categoria errada
@@ -144,7 +142,7 @@ public class Produto {
     }
     
     public boolean validaMarca(){
-        if(this.getMarca().length() > 100 || this.getNome().length() < 1)
+        if(this.getMarca().length() > 100 || this.getMarca().length() < 1)
             return false;//Categoria errada
         //if(!this.getMarca().matches("[a-zA-Z]+ [a-zA-Z]+"))
             //return false;//Categoria errada
@@ -165,7 +163,7 @@ public class Produto {
     
     public boolean validaPreco(){
         if(this.getPreco() < 0.00)
-            return false;//Preço errado
+            return false;//Preço errado 
         return true;
     }
 }
