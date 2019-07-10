@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EnderecoWindow.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;SGHM&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">gui</a> &gt; <span class="el_source">EnderecoWindow.java</span></div><h1>EnderecoWindow.java</h1><pre class="source lang-java linenums">package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import entidades.Endereco;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.util.List;
+
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+public class EnderecoWindow extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	private JLabel lblCarregarEndereco;
+	private JPanel panel;
+	private JLabel lblRua;
+	private JTextField txtRua;
+	private JTextField txtNumero;
+	private JTextField txtComplemento;
+	private JLabel lblBairro;
+	private JTextField txtBairro;
+	private JLabel lblCidade;
+	private JTextField txtCidade;
+	private JLabel lblEstado;
+	private JTextField txtEstado;
+	private JLabel lblCep;
+	private JTextField txtCep;
+	private JButton btnListar;
+	private JButton btnSelecionar;
+<span class="nc" id="L48">	private DefaultTableModel model = new DefaultTableModel(new Object[][] {},</span>
+			new String[] { &quot;Id&quot;, &quot;Rua&quot;, &quot;Numero&quot;, &quot;Complemento&quot;, &quot;Bairro&quot;, &quot;Cidade&quot;, &quot;Estado&quot;, &quot;CEP&quot; });
+        private List&lt;Endereco&gt; endLista;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L56">		EventQueue.invokeLater(new Runnable() {</span>
+			public void run() {
+				try {
+<span class="nc" id="L59">                                        List&lt;Endereco&gt; endList = new ArrayList&lt;Endereco&gt;();</span>
+                                        
+<span class="nc" id="L61">                                        Endereco end = new Endereco();</span>
+<span class="nc" id="L62">                                        end.setRua(&quot;Alberto Carazzai&quot;);</span>
+<span class="nc" id="L63">                                        end.setBairro(&quot;Centro&quot;);</span>
+<span class="nc" id="L64">                                        end.setCep(&quot;12345678&quot;);</span>
+<span class="nc" id="L65">                                        end.setCidade(&quot;Cornélio&quot;);</span>
+<span class="nc" id="L66">                                        end.setEstado(&quot;Parana&quot;);</span>
+<span class="nc" id="L67">                                        end.setComplemento(&quot;Nao tem&quot;);</span>
+<span class="nc" id="L68">                                        end.setNumero(123);</span>
+                                        
+<span class="nc" id="L70">                                        endList.add(end);</span>
+                                        
+<span class="nc" id="L72">					EnderecoWindow frame = new EnderecoWindow(endList);</span>
+<span class="nc" id="L73">					frame.setVisible(true);</span>
+<span class="nc" id="L74">				} catch (Exception e) {</span>
+<span class="nc" id="L75">					e.printStackTrace();</span>
+<span class="nc" id="L76">				}</span>
+<span class="nc" id="L77">			}</span>
+		});
+<span class="nc" id="L79">	}</span>
+
+	/**
+	 * Create the frame.
+	 */
+<span class="nc" id="L84">	public EnderecoWindow(List&lt;Endereco&gt; endLista) {</span>
+<span class="nc" id="L85">                this.endLista = endLista;</span>
+<span class="nc" id="L86">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L87">		setBounds(100, 100, 680, 652);</span>
+<span class="nc" id="L88">		contentPane = new JPanel();</span>
+<span class="nc" id="L89">		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="nc" id="L90">		contentPane.setLayout(new BorderLayout(0, 0));</span>
+<span class="nc" id="L91">		setContentPane(contentPane);</span>
+
+<span class="nc" id="L93">		JScrollPane scrollPane = new JScrollPane();</span>
+<span class="nc" id="L94">		scrollPane.setViewportBorder(UIManager.getBorder(&quot;Table.scrollPaneBorder&quot;));</span>
+<span class="nc" id="L95">		contentPane.add(scrollPane, BorderLayout.SOUTH);</span>
+
+		// ============ Carregar tabela com informações =====================
+<span class="nc" id="L98">		table = new JTable();</span>
+<span class="nc" id="L99">		table.setModel(model);</span>
+<span class="nc" id="L100">		table.getColumnModel().getColumn(0).setPreferredWidth(39);</span>
+<span class="nc" id="L101">		table.getColumnModel().getColumn(1).setPreferredWidth(163);</span>
+<span class="nc" id="L102">		table.getColumnModel().getColumn(2).setPreferredWidth(60);</span>
+<span class="nc" id="L103">		table.getColumnModel().getColumn(3).setPreferredWidth(90);</span>
+<span class="nc" id="L104">		table.getColumnModel().getColumn(4).setPreferredWidth(99);</span>
+<span class="nc" id="L105">		table.getColumnModel().getColumn(5).setPreferredWidth(99);</span>
+<span class="nc" id="L106">		table.getColumnModel().getColumn(6).setPreferredWidth(110);</span>
+<span class="nc" id="L107">		table.getColumnModel().getColumn(7).setPreferredWidth(76);</span>
+<span class="nc" id="L108">		scrollPane.setViewportView(table);</span>
+
+		// ================== Final da tabela ===============================
+
+<span class="nc" id="L112">		lblCarregarEndereco = new JLabel(&quot;Carregar Endereco&quot;);</span>
+<span class="nc" id="L113">		lblCarregarEndereco.setFont(new Font(&quot;Tahoma&quot;, Font.BOLD, 15));</span>
+<span class="nc" id="L114">		lblCarregarEndereco.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L115">		contentPane.add(lblCarregarEndereco, BorderLayout.NORTH);</span>
+
+<span class="nc" id="L117">		panel = new JPanel();</span>
+<span class="nc" id="L118">		contentPane.add(panel, BorderLayout.CENTER);</span>
+<span class="nc" id="L119">		panel.setLayout(null);</span>
+
+<span class="nc" id="L121">		lblRua = new JLabel(&quot;Rua&quot;);</span>
+<span class="nc" id="L122">		lblRua.setBounds(12, 16, 27, 16);</span>
+<span class="nc" id="L123">		panel.add(lblRua);</span>
+
+<span class="nc" id="L125">		txtRua = new JTextField();</span>
+<span class="nc" id="L126">		txtRua.setBounds(51, 13, 291, 22);</span>
+<span class="nc" id="L127">		panel.add(txtRua);</span>
+<span class="nc" id="L128">		txtRua.setColumns(10);</span>
+
+<span class="nc" id="L130">		JLabel lblNumero = new JLabel(&quot;Numero&quot;);</span>
+<span class="nc" id="L131">		lblNumero.setBounds(12, 45, 56, 16);</span>
+<span class="nc" id="L132">		panel.add(lblNumero);</span>
+
+<span class="nc" id="L134">		txtNumero = new JTextField();</span>
+<span class="nc" id="L135">		txtNumero.setBounds(61, 42, 63, 22);</span>
+<span class="nc" id="L136">		panel.add(txtNumero);</span>
+<span class="nc" id="L137">		txtNumero.setColumns(10);</span>
+
+<span class="nc" id="L139">		JLabel lblComplemento = new JLabel(&quot;Complemento&quot;);</span>
+<span class="nc" id="L140">		lblComplemento.setBounds(136, 45, 79, 16);</span>
+<span class="nc" id="L141">		panel.add(lblComplemento);</span>
+
+<span class="nc" id="L143">		txtComplemento = new JTextField();</span>
+<span class="nc" id="L144">		txtComplemento.setBounds(227, 42, 115, 22);</span>
+<span class="nc" id="L145">		panel.add(txtComplemento);</span>
+<span class="nc" id="L146">		txtComplemento.setColumns(10);</span>
+
+<span class="nc" id="L148">		lblBairro = new JLabel(&quot;Bairro&quot;);</span>
+<span class="nc" id="L149">		lblBairro.setBounds(374, 16, 39, 16);</span>
+<span class="nc" id="L150">		panel.add(lblBairro);</span>
+
+<span class="nc" id="L152">		txtBairro = new JTextField();</span>
+<span class="nc" id="L153">		txtBairro.setBounds(425, 13, 215, 22);</span>
+<span class="nc" id="L154">		panel.add(txtBairro);</span>
+<span class="nc" id="L155">		txtBairro.setColumns(10);</span>
+
+<span class="nc" id="L157">		lblCidade = new JLabel(&quot;Cidade&quot;);</span>
+<span class="nc" id="L158">		lblCidade.setBounds(374, 45, 45, 16);</span>
+<span class="nc" id="L159">		panel.add(lblCidade);</span>
+
+<span class="nc" id="L161">		txtCidade = new JTextField();</span>
+<span class="nc" id="L162">		txtCidade.setBounds(425, 42, 215, 22);</span>
+<span class="nc" id="L163">		panel.add(txtCidade);</span>
+<span class="nc" id="L164">		txtCidade.setColumns(10);</span>
+
+<span class="nc" id="L166">		lblEstado = new JLabel(&quot;Estado&quot;);</span>
+<span class="nc" id="L167">		lblEstado.setBounds(12, 74, 56, 16);</span>
+<span class="nc" id="L168">		panel.add(lblEstado);</span>
+
+<span class="nc" id="L170">		txtEstado = new JTextField();</span>
+<span class="nc" id="L171">		txtEstado.setBounds(53, 71, 162, 22);</span>
+<span class="nc" id="L172">		panel.add(txtEstado);</span>
+<span class="nc" id="L173">		txtEstado.setColumns(10);</span>
+
+<span class="nc" id="L175">		lblCep = new JLabel(&quot;CEP&quot;);</span>
+<span class="nc" id="L176">		lblCep.setBounds(227, 71, 27, 16);</span>
+<span class="nc" id="L177">		panel.add(lblCep);</span>
+
+<span class="nc" id="L179">		txtCep = new JTextField();</span>
+<span class="nc" id="L180">		txtCep.setBounds(266, 68, 76, 22);</span>
+<span class="nc" id="L181">		panel.add(txtCep);</span>
+<span class="nc" id="L182">		txtCep.setColumns(10);</span>
+
+<span class="nc" id="L184">		JButton btnCadastrar = new JButton(&quot;Cadastrar&quot;);</span>
+<span class="nc" id="L185">		btnCadastrar.setBounds(374, 70, 91, 25);</span>
+<span class="nc" id="L186">		panel.add(btnCadastrar);</span>
+<span class="nc" id="L187">		btnCadastrar.addActionListener(e -&gt; this.create());</span>
+
+<span class="nc" id="L189">		JButton btnCancelar = new JButton(&quot;Cancelar&quot;);</span>
+<span class="nc" id="L190">		btnCancelar.setBounds(553, 110, 87, 25);</span>
+<span class="nc" id="L191">		panel.add(btnCancelar);</span>
+<span class="nc" id="L192">		btnCancelar.addActionListener(e -&gt; System.exit(0)); // Fecha o aplicativo</span>
+
+<span class="nc" id="L194">		JLabel lblFunesAdministrativa = new JLabel(&quot;Funções Administrativas:&quot;);</span>
+<span class="nc" id="L195">		lblFunesAdministrativa.setBounds(12, 114, 155, 16);</span>
+<span class="nc" id="L196">		panel.add(lblFunesAdministrativa);</span>
+
+<span class="nc" id="L198">		JButton btnAtualizar = new JButton(&quot;Atualizar&quot;);</span>
+<span class="nc" id="L199">		btnAtualizar.setEnabled(true);</span>
+<span class="nc" id="L200">		btnAtualizar.setBounds(179, 110, 97, 25);</span>
+<span class="nc" id="L201">		panel.add(btnAtualizar);</span>
+<span class="nc" id="L202">		btnAtualizar.addActionListener(e -&gt; this.update());</span>
+
+<span class="nc" id="L204">		JButton btnDeletar = new JButton(&quot;Deletar&quot;);</span>
+<span class="nc" id="L205">		btnDeletar.setEnabled(false);</span>
+<span class="nc" id="L206">		btnDeletar.setBounds(288, 110, 97, 25);</span>
+<span class="nc" id="L207">		panel.add(btnDeletar);</span>
+<span class="nc" id="L208">		btnDeletar.addActionListener(e -&gt; this.delete());</span>
+
+<span class="nc" id="L210">		btnListar = new JButton(&quot;Listar&quot;);</span>
+<span class="nc" id="L211">		btnListar.setBounds(468, 70, 71, 25);</span>
+<span class="nc" id="L212">		panel.add(btnListar);</span>
+<span class="nc" id="L213">		btnListar.addActionListener(e -&gt; this.listar());</span>
+
+<span class="nc" id="L215">		btnSelecionar = new JButton(&quot;Selecionar&quot;);</span>
+<span class="nc" id="L216">		btnSelecionar.setBounds(543, 70, 97, 25);</span>
+<span class="nc" id="L217">		panel.add(btnSelecionar);</span>
+<span class="nc" id="L218">		btnSelecionar.addActionListener(e -&gt; this.selecionar());</span>
+
+<span class="nc" id="L220">	}</span>
+
+	// Operacoes do CRUD
+	private void create(){
+<span class="nc" id="L224">                Endereco end = new Endereco();</span>
+<span class="nc" id="L225">		end.setRua(txtRua.getText());</span>
+<span class="nc" id="L226">		end.setNumero(Integer.parseInt(txtNumero.getText()));</span>
+<span class="nc" id="L227">		end.setBairro(txtBairro.getText());</span>
+<span class="nc" id="L228">		end.setCidade(txtCidade.getText());</span>
+<span class="nc" id="L229">		end.setEstado(txtEstado.getText());</span>
+<span class="nc" id="L230">		end.setCep(txtCep.getText());</span>
+<span class="nc" id="L231">		end.setComplemento(txtComplemento.getText());</span>
+            
+		try {
+<span class="nc" id="L234">                    end.validaCampos();</span>
+<span class="nc" id="L235">                    endLista.add(end);</span>
+<span class="nc" id="L236">                    this.listar();</span>
+<span class="nc" id="L237">                    JOptionPane.showMessageDialog(this, &quot;Endereço cadastrado com sucesso&quot;);</span>
+<span class="nc" id="L238">		} catch (Exception e) {</span>
+<span class="nc" id="L239">			JOptionPane.showMessageDialog(this, e.getMessage());</span>
+<span class="nc" id="L240">		}</span>
+<span class="nc" id="L241">	}</span>
+
+	private int id_selecionado; // Auxiliar para mandar o id de quem for selecionado
+
+	private void selecionar() {
+<span class="nc" id="L246">		this.id_selecionado = (int) model.getValueAt(table.getSelectedRow(), 0);</span>
+<span class="nc" id="L247">		Endereco end = new Endereco();</span>
+<span class="nc" id="L248">		txtRua.setText((String) model.getValueAt(table.getSelectedRow(), 1));</span>
+<span class="nc" id="L249">		txtNumero.setText((String) Integer.toString((int) model.getValueAt(table.getSelectedRow(), 2)));</span>
+<span class="nc" id="L250">		txtComplemento.setText((String) model.getValueAt(table.getSelectedRow(), 3));</span>
+<span class="nc" id="L251">		txtBairro.setText((String) model.getValueAt(table.getSelectedRow(), 4));</span>
+<span class="nc" id="L252">		txtCidade.setText((String) model.getValueAt(table.getSelectedRow(), 5));</span>
+<span class="nc" id="L253">		txtEstado.setText((String) model.getValueAt(table.getSelectedRow(), 6));</span>
+<span class="nc" id="L254">		txtCep.setText((String) model.getValueAt(table.getSelectedRow(), 7));</span>
+
+<span class="nc" id="L256">	}</span>
+
+	private void update() {
+		/*Endereco end = new Endereco();
+		end.setId(this.id_selecionado);
+		end.setRua(txtRua.getText());
+		end.setNumero(Integer.parseInt(txtNumero.getText()));
+		end.setBairro(txtBairro.getText());
+		end.setCidade(txtCidade.getText());
+		end.setEstado(txtEstado.getText());
+		end.setCep(txtCep.getText());
+		end.setComplemento(txtComplemento.getText());*/
+
+		try {
+<span class="nc bnc" id="L270" title="All 2 branches missed.">                    for(Endereco end : endLista){</span>
+<span class="nc bnc" id="L271" title="All 2 branches missed.">                        if(end.getId() == this.id_selecionado){</span>
+<span class="nc" id="L272">                            end.setRua(txtRua.getText());</span>
+<span class="nc" id="L273">                            end.setNumero(Integer.parseInt(txtNumero.getText()));</span>
+<span class="nc" id="L274">                            end.setBairro(txtBairro.getText());</span>
+<span class="nc" id="L275">                            end.setCidade(txtCidade.getText());</span>
+<span class="nc" id="L276">                            end.setEstado(txtEstado.getText());</span>
+<span class="nc" id="L277">                            end.setCep(txtCep.getText());</span>
+<span class="nc" id="L278">                            end.setComplemento(txtComplemento.getText());</span>
+                        }
+<span class="nc" id="L280">                    }</span>
+                    
+<span class="nc" id="L282">                    this.listar();</span>
+<span class="nc" id="L283">                    JOptionPane.showMessageDialog(this, &quot;Endereço atualizado com sucesso&quot;);</span>
+<span class="nc" id="L284">		} catch (Exception e) {</span>
+<span class="nc" id="L285">                    JOptionPane.showMessageDialog(this, e.getMessage());</span>
+<span class="nc" id="L286">		}</span>
+<span class="nc" id="L287">	}</span>
+
+	private void delete() {
+		/*try {
+			new EnderecoController().delete((int) model.getValueAt(table.getSelectedRow(), 0));
+			this.listar();
+			JOptionPane.showMessageDialog(this, &quot;Endereço deletado com sucesso&quot;);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, &quot;Não foi póssível deletar endereço&quot;);
+		}*/
+<span class="nc" id="L297">	}</span>
+
+	// ============== Inicio listagem enderecos ================
+	public void limpaTabela() {
+		// limpaTabela
+<span class="nc" id="L302">		model.setRowCount(0);</span>
+<span class="nc" id="L303">	}</span>
+
+	// funcao para alimentar tabela
+	public void listar() {
+<span class="nc" id="L307">		limpaTabela();</span>
+		try {
+			
+
+<span class="nc bnc" id="L311" title="All 2 branches missed.">			for (Endereco end : endLista) {</span>
+<span class="nc" id="L312">				model.addRow(new Object[] { end.getId(), end.getRua(), end.getNumero(), end.getComplemento(),</span>
+<span class="nc" id="L313">						end.getBairro(), end.getCidade(), end.getEstado(), end.getCep() });</span>
+<span class="nc" id="L314">			}</span>
+<span class="nc" id="L315">		} catch (Exception e) {</span>
+<span class="nc" id="L316">			throw e;</span>
+<span class="nc" id="L317">		}</span>
+<span class="nc" id="L318">	}</span>
+	// ======================= Fim Listagem ======================
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

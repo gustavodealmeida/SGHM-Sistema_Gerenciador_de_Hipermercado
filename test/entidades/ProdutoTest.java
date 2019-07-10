@@ -43,7 +43,7 @@ public class ProdutoTest {
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void produtoCORRETO(){
+    public void enderecoCORRETO(){
 
         Produto p = new Produto();
         p.setCategoria("Alimento");
@@ -52,302 +52,245 @@ public class ProdutoTest {
         p.setMarca("UTFPR");
         p.setMassa(0.500);
         p.setNome("Macarrão");
+        p.setPreco(500);
+        p.setEst_id(15);
         
         try{
-            p.validaCampos();
+            assertTrue(p.validaCod_barras());
+            assertTrue(p.validaNome());
+            assertTrue(p.validaCategoria());
+            assertTrue(p.validaMarca());
+            assertTrue(p.validaCusto_uni());
+            assertTrue(p.validaMassa());
+            assertTrue(p.validaPreco());
+            assertEquals(p.getEst_id(), 15);
+            
         }catch(Exception e){
             System.out.println(e.getMessage());
             fail();
         }
     }
     
+    
     @Test
-    public void produtoContrutor(){
-        Produto p = new Produto("1234", "Macarrão", "Alimento", "UTFPR", 0.500, 2.00, 3.00, 20);
+    public void produtoConstrutor(){
+        
+        Produto p = new Produto("25254", "Bolacha", "Bolacha", "Passatempo", 
+                5.5, 2.30, 2.30, 50);
         
         try{
-            p.validaCampos();
+            
         }catch(Exception e){
             fail();
         }
     }
     
-    //========== Validando Codidgo de Barras =================
     @Test
-    public void codigo_barrasInvalido(){
-
+    public void IncorretoCodMenor(){
         Produto p = new Produto();
-        p.setCategoria("Alimento");
+        
         p.setCod_barras("");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
-        try{
-            p.validaCampos();
-            fail();
-        }catch(Exception e){
-            assertEquals(e.getMessage(), "Código de Barras Inválido");
-        }
-    }
-    
-    //========== Validando NOME PRODUTO =================
-    @Test
-    public void nomeInferior(){
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Ma");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaCod_barras());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Nome Inválido");
+            fail();
         }
     }
     
     @Test
-    public void nomeSuperior(){
+    public void IncorretoCodMaior(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrãoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaCod_barras());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Nome Inválido");
+            fail();
         }
     }
-    
-    //========== Validando CATEGORIA =================
-    @Test
-    public void categoriaInferior(){
 
-        Produto p = new Produto();
-        p.setCategoria("Al");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
-        try{
-            p.validaCampos();
-            fail();
-        }catch(Exception e){
-            assertEquals(e.getMessage(), "Categoria Inválida");
-        }
-    }
-    
     @Test
-    public void categoriaSuperior(){
+    public void IncorretoNomeMenor(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("a");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimentoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaNome());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Categoria Inválida");
+            fail();
         }
     }
     
-    //========== Validando NOME PRODUTO =================
     @Test
-    public void marcaInferior(){
+    public void IncorretoNomeMaior(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaNome());            
         }catch(Exception e){
-            //System.out.println(e.getMessage());
-            assertEquals(e.getMessage(), "Marca Inválida");
+            fail();
         }
     }
     
     @Test
-    public void marcaSuperior(){
+    public void IncorretoCatMenor(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("a");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaCategoria());            
         }catch(Exception e){
-            //System.out.println(e.getMessage());
-            assertEquals(e.getMessage(), "Marca Inválida");
+            fail();
         }
     }
     
-    //=============== MASSA ===================
     @Test
-    public void massaInvalida(){
+    public void IncorretoCatMaior(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(-0.500);
-        p.setNome("Macarrão");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaCategoria());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Massa Inválida");
+            fail();
         }
-        
     }
-    
-    //=============== CUSTO UNIDADE ===================
-    @Test
-    public void custoInvalido(){
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(-2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
-        try{
-            p.validaCampos();
-            fail();
-        }catch(Exception e){
-            assertEquals(e.getMessage(), "Custo da Unidade Inválida");
-        }
-        
-    }
-    
-    //=============== PREÇO ===================
     @Test
-    public void precoInvalido(){
+    public void IncorretoMarcaMenor(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("a");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        p.setPreco(-3.00);
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaMarca());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Preço Inválido");
+            fail();
         }
-        
     }
     
-    
-    
-    
-    /*/========== Validando NOME PRODUTO =================
     @Test
-    public void nomeInferior(){
+    public void IncorretoMarcaMaior(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
-        Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
-        
         try{
-            p.validaCampos();
-            fail();
+            assertFalse(p.validaMarca());            
         }catch(Exception e){
-            //System.out.println(e.getMessage());
-            assertEquals(e.getMessage(), "Nome Inválido");
+            fail();
         }
     }
     
     @Test
-    public void nomeSuperior(){
+    public void IncorretoMassa(){
+        Produto p = new Produto();
+        
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(-5);
+        p.setCusto_uni(5);
+        p.setPreco(5);
 
+        try{
+            assertFalse(p.validaMassa());            
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
+    public void IncorretoCusto(){
         Produto p = new Produto();
-        p.setCategoria("Alimento");
-        p.setCod_barras("1234");
-        p.setCusto_uni(2.00);
-        p.setMarca("UTFPR");
-        p.setMassa(0.500);
-        p.setNome("Macarrão");
         
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(-5);
+        p.setPreco(5);
+
         try{
-            p.validaCampos();
-            fail();
-        }catch(Exception e){
-            //System.out.println(e.getMessage());
-            assertEquals(e.getMessage(), "Nome Inválido");
-        }
-    }
-    /*
-    @Test
-    public void enderecoConstrutor(){
-        
-        Endereco end = new Endereco("Alberto Carazzai", 123, "Nao tem", "Centro", "Cornélio", "Parana", "12345678");
-        
-        try{
-            end.validaCampos();
+            assertFalse(p.validaCusto_uni());            
         }catch(Exception e){
             fail();
         }
     }
-    
-    //=========== Testes em relação a rua =====================
-    
+
     @Test
-    public void ruaInferior(){
-        Endereco end = new Endereco();
-        end.setRua("Alb");
-        end.setBairro("Centro");
-        end.setCep("12345678");
-        end.setCidade("Cornélio");
-        end.setEstado("Parana");
-        end.setComplemento("Nao tem");
-        end.setNumero(123);
+    public void IncorretoPreco(){
+        Produto p = new Produto();
         
+        p.setCod_barras("1111111111111111111111111111111111111111111111111111");
+        p.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setCategoria("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMarca("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        p.setMassa(5);
+        p.setCusto_uni(5);
+        p.setPreco(-5);
+
         try{
-            end.validaCampos();            
+            assertFalse(p.validaPreco());            
         }catch(Exception e){
-            assertEquals(e.getMessage(), "Rua Inválida");
+            fail();
         }
-    }*/
+    }
 }

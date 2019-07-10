@@ -42,6 +42,7 @@ public class FuncionarioTest {
     public void funcionarioConstrutor(){
 
         Funcionario f = new Funcionario("Anderson Felipe", "36390745800", null, "", "", "anderson@jesus.com", "1412345677", "m", "chefe", "11122233300");
+        
         try{
             f.validaCampos();
         }catch(Exception e){

@@ -66,6 +66,19 @@ public class EnderecoTest {
         }
     }
     
+    @Test
+    public void construtor(){
+        Endereco e = new Endereco();
+        
+        e.setId(4525);
+        
+        try{
+            int i = e.getId();
+        }catch(Exception er){
+            fail();
+        }
+    }
+    
     //=========== Testes em relação a rua =====================
     
     @Test
@@ -168,7 +181,7 @@ public class EnderecoTest {
         end.setRua("Alberto Carazzai");
         end.setBairro("Centro");
         end.setCep("12345678");
-        end.setCidade("Cornélioaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        end.setCidade("Cornélioaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         end.setEstado("Parana");
         end.setComplemento("Nao tem");
         end.setNumero(123);
@@ -207,7 +220,7 @@ public class EnderecoTest {
         end.setBairro("Centro");
         end.setCep("12345678");
         end.setCidade("Cornélio");
-        end.setEstado("Paranaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        end.setEstado("Paranaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         end.setComplemento("Nao tem");
         end.setNumero(123);
         
@@ -246,7 +259,7 @@ public class EnderecoTest {
         end.setCep("12345678");
         end.setCidade("Cornélio");
         end.setEstado("Parana");
-        end.setComplemento("Nao temaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        end.setComplemento("Nao temaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         end.setNumero(123);
         
         try{
@@ -295,5 +308,4 @@ public class EnderecoTest {
             assertEquals(e.getMessage(), "Cep Inválido");
         }
     }
-    
 }

@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
@@ -153,6 +154,45 @@ public class PessoaTest {
         }
     }
     
+    @Test
+    public void telefoneCorreto1(){
+        Pessoa p = new Pessoa();
+        
+        p.setTelefone("91234567");
+        
+        try{
+            assertTrue(p.validaTelefone());
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
+    public void telefoneCorreto2(){
+        Pessoa p = new Pessoa();
+        
+        p.setTelefone("9123456789");
+        
+        try{
+            assertTrue(p.validaTelefone());
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
+    public void telefoneCorreto3(){
+        Pessoa p = new Pessoa();
+        
+        p.setTelefone("912345678999");
+        
+        try{
+            assertTrue(p.validaTelefone());
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
                     /*Testando Sexo*/
     @Test
     public void sexoM(){
@@ -230,7 +270,26 @@ public class PessoaTest {
         }
     }
     
-    
+    @Test
+    public void construtor(){
+        Pessoa p = new Pessoa();
+        
+        Date d = new Date();
+        String s, sT;
+
+        p.setNasc(d);
+        p.setdocId("08530549910");
+        p.setTipoDocId("RG");        
+        
+        try{
+            d = p.getNasc();
+            s = p.getdocId();
+            sT = p.getTipoDocId();
+            
+        }catch(Exception e){
+            fail();
+        }
+    }
     
     
 

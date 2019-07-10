@@ -1,7 +1,7 @@
 package entidades;
 
 import java.security.Identity;
-import java.sql.Date;
+import java.util.Date;
 import entidades.Endereco;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -122,11 +122,7 @@ public class Pessoa{
     public String getSexo(){
         return this.sexo;
     }
-    
-
  
- 
-    
     public void validaCampos() throws Exception{
         if(!validaNome())
             throw new Exception("Nome Inválido");
@@ -151,13 +147,13 @@ public class Pessoa{
     }
     
     public boolean validaEmail(){
-        if(this.getEmail().matches("[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}(\\.[a-zA-Z0-9]{2,})+"))
-            return true;
-        return false;
+        return this.getEmail().matches("[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}(\\.[a-zA-Z0-9]{2,})+");
     }
     
     public boolean validaTelefone(){
-        if(this.getTelefone().matches("[0-9]+")&& this.getTelefone().length() == 8 || this.getTelefone().length() == 10 || this.getTelefone().length() == 12 )
+        if(this.getTelefone().length() == 8 || 
+                this.getTelefone().length() == 10 || 
+                this.getTelefone().length() == 12 )
             return true;
         return false;
     }
@@ -169,70 +165,7 @@ public class Pessoa{
     }
     
     public boolean validaCPF(){
-        String CPF = getCPF();
-        if (CPF.equals("00000000000") ||
-	        CPF.equals("11111111111") ||
-	        CPF.equals("22222222222") || CPF.equals("33333333333") ||
-	        CPF.equals("44444444444") || CPF.equals("55555555555") ||
-	        CPF.equals("66666666666") || CPF.equals("77777777777") ||
-	        CPF.equals("88888888888") || CPF.equals("99999999999") ||
-	        (CPF.length() != 11))
-            return(false);
-        char dig10, dig11;
-        int sm, i, r, num, peso;
-        try {
-            sm = 0;
-            peso = 10;
-            for (i=0; i<9; i++) {
-                num = (int)(CPF.charAt(i) - 48);
-                sm = sm + (num * peso);
-                peso = peso - 1;
-            }
-            r = 11 - (sm % 11);
-            if ((r == 10) || (r == 11)) {
-                dig10 = '0';
-            }else {
-                dig10 = (char)(r + 48);
-            }
-            sm = 0;
-            peso = 11;
-            for(i=0; i<10; i++) {
-                num = (int)(CPF.charAt(i) - 48);
-                sm = sm + (num * peso);
-                peso = peso - 1;
-            }
-            r = 11 - (sm % 11);
-            if ((r == 10) || (r == 11)) {
-                dig11 = '0';
-            } else {
-                dig11 = (char)(r + 48);
-            }
-            if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10))) {
-                return(true);
-            } else {
-                return(false);
-            }
-        }catch (InputMismatchException erro) {
-            return(false);
-        }
+        Utils u = new Utils();
+        return u.validaCPF(getCPF());
     }
-    
-    public boolean validaNasc(){
-        Date data = getNasc();
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate d = LocalDate.parse((CharSequence)data, formatter);
-            return true;
-        }catch (DateTimeParseException e) {
-            return false;
-      }   
-   }
-    //verifica se a data que esta tentando ser digitada não é uma data do futuro
-    public boolean dataMenorQueHoje(Date data) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dataVerificada = LocalDate.parse((CharSequence) data, dtf);
-        LocalDate hoje = LocalDate.now();
-        return dataVerificada.compareTo(hoje) <= 0;
-    }
-    
 }

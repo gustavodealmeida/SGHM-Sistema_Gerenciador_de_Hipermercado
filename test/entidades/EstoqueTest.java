@@ -7,14 +7,19 @@ package entidades;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import entidades.Estoque;
 
+/**
+ *
+ * @author prado
+ */
 public class EstoqueTest {
-    
     public EstoqueTest() {
     }
     
@@ -32,31 +37,53 @@ public class EstoqueTest {
     
     @After
     public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
+    } 
+    
     @Test
-    public void estoqueCorreto(){
-        Estoque est = new Estoque(1, 1);
+    public void estoqueConstrutor(){
+        Estoque es = new Estoque(2, 500);
         
         try{
-            est.validaCampos();
+            es.validaCampos();
         }catch(Exception e){
             fail();
         }
     }
     
     @Test
-    public void nomeSuperior(){
-        Estoque est = new Estoque();
-        est.setId(1);
-        est.setQuant(-2);
+    public void construtor(){
+        Estoque es = new Estoque();
+        
+        es.setId(10);
         
         try{
-            est.validaCampos();
+            assertEquals(es.getId(), 10);
+        }catch(Exception e){
             fail();
+        }
+    }
+    
+    @Test
+    public void quantidadeValida(){
+        Estoque es = new Estoque();
+        
+        es.setQuant(5874);
+        
+        try{
+            assertTrue(es.validaQuant());
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
+    public void quantidadeInvalida(){
+        Estoque es = new Estoque();
+        
+        es.setQuant(-2481);
+        
+        try{
+            es.validaCampos();
         }catch(Exception e){
             assertEquals(e.getMessage(), "Quantidade Incorreta");
         }

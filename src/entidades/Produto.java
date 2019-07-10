@@ -102,31 +102,14 @@ public class Produto {
         this.est_id = est_id;
     }
     
-    public void validaCampos() throws Exception{
-        if(!validaCodBarras())
-            throw new Exception("Código de Barras Inválido");
-        if(!validaNome())
-            throw new Exception("Nome Inválido");
-        if(!validaCategoria())
-            throw new Exception("Categoria Inválida");
-        if(!validaMarca())
-            throw new Exception("Marca Inválida");
-        if(!validaMassa())
-            throw new Exception("Massa Inválida");
-        if(!validaCusto_uni())
-            throw new Exception("Custo da Unidade Inválida");
-        if(!validaPreco())
-            throw new Exception("Preço Inválido");
-    }
-    
-    public boolean validaCodBarras(){
-        if(!this.getCod_barras().matches("[0-9]{1,50}"))
-            return false;//Codigo de barras errado
-        return true;
+    public boolean validaCod_barras(){
+        return !(this.getCod_barras().length() > 50 || 
+                this.getCod_barras().length() < 1);    
     }
     
     public boolean validaNome(){
-        if(this.getNome().length() > 100 || this.getNome().length() < 3)
+        if(this.getNome().length() > 50 || 
+                this.getNome().length() < 3)
             return false;//Nome errado
         //if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
             //return false;//Nome errado
@@ -134,7 +117,8 @@ public class Produto {
     }
     
     public boolean validaCategoria(){
-        if(this.getCategoria().length() > 100 || this.getCategoria().length() < 3)
+        if(this.getCategoria().length() > 50 || 
+                this.getCategoria().length() < 3)
             return false;//Categoria errada
         //if(!this.getCategoria().matches("[a-zA-Z]+ [a-zA-Z]+"))
             //return false;//Categoria errada
@@ -142,7 +126,8 @@ public class Produto {
     }
     
     public boolean validaMarca(){
-        if(this.getMarca().length() > 100 || this.getMarca().length() < 1)
+        if(this.getMarca().length() > 50 || 
+                this.getMarca().length() < 2)
             return false;//Categoria errada
         //if(!this.getMarca().matches("[a-zA-Z]+ [a-zA-Z]+"))
             //return false;//Categoria errada
@@ -163,7 +148,7 @@ public class Produto {
     
     public boolean validaPreco(){
         if(this.getPreco() < 0.00)
-            return false;//Preço errado 
+            return false;//Preço errado
         return true;
     }
 }
