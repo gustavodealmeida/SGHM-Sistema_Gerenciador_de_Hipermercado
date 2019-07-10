@@ -36,19 +36,19 @@ public class Venda {
     }
 
     public String getCod_barras() {
-        return cod_barras;
+        return this.cod_barras;
     }
 
     public String getFunc_cpf() {
-        return func_cpf;
+        return this.func_cpf;
     }
 
     public String getCliente_cpf() {
-        return cliente_cpf;
+        return this.cliente_cpf;
     }
 
     public Date getData() {
-        return data;
+        return this.data;
     }
     
     public boolean validaCod_barras(){
