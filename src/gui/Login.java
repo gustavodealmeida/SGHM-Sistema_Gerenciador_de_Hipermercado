@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.utfpr.sghm.gui;
+package gui;
+
+import entidades.Utils;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +19,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+    }
+    public boolean validaCPF(String cpf){
+        Utils u = new Utils();
+        return u.validaCPF(cpf);
     }
 
     /**
@@ -32,8 +39,8 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextCpf = new javax.swing.JTextField();
+        jTextPassword = new javax.swing.JTextField();
         jButtonCancel = new javax.swing.JButton();
         jButtonEntrar = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -44,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/carrinho.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carrinho.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -53,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 50, 23, 150);
         jPanel1.add(jLabel1, gridBagConstraints);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SGHM.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/SGHM.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -62,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 215, 6, 50);
         jPanel1.add(jLabel2, gridBagConstraints);
 
-        jTextField1.setText("CPF");
+        jTextCpf.setText("CPF");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -70,9 +77,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        jPanel1.add(jTextCpf, gridBagConstraints);
 
-        jTextField2.setText("Senha");
+        jTextPassword.setText("Senha");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -80,7 +87,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel1.add(jTextPassword, gridBagConstraints);
 
         jButtonCancel.setText("CANCELAR");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -92,6 +99,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jButtonCancel, gridBagConstraints);
 
         jButtonEntrar.setText("ENTRAR");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -133,6 +145,12 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        // TODO add your handling code here:
+        if(!validaCPF(jTextCpf.getText()))
+            JOptionPane.showMessageDialog(this,"Cpf invalido", "ERROR", HEIGHT);
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +196,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextCpf;
+    private javax.swing.JTextField jTextPassword;
     // End of variables declaration//GEN-END:variables
 }
