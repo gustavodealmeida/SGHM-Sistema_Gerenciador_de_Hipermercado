@@ -95,7 +95,7 @@ public class Endereco {
         if(!validaRua())
             throw new Exception("Rua Inválida");
         if(!validaNumero())
-            throw new Exception("Numero Inválido");
+            throw new Exception("Número Inválido");
         if(!validaComplemento())
             throw new Exception("Complemento Inválido");
         if(!validaBairro())
@@ -103,7 +103,7 @@ public class Endereco {
         if(!validaCidade())
             throw new Exception("Cidade Inválida");
         if(!validaEstado())
-            throw new Exception("Estado Inválida");
+            throw new Exception("Estado Inválido");
         if(!validaCep())
             throw new Exception("Cep Inválido");
     }
@@ -111,32 +111,32 @@ public class Endereco {
 	public boolean validaRua(){
             if(this.getRua().length() > 255 || this.getRua().length() < 5)
                 return false;//Rua errada
-            if(!this.getRua().matches("[a-zA-Z]+ [a-zA-Z]+"))
-                return false;//Rua errada
+            //if(!this.getRua().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
+                //return false;//Rua errada
         return true;
         }
         
         public boolean validaComplemento(){
             if(this.getComplemento().length() > 100 || this.getComplemento().length() < 5)
                 return false;//Complemento errado
-            if(!this.getComplemento().matches("[a-zA-Z]+ [a-zA-Z]+"))
-                return false;//Complemento errado
+            //if(!this.getComplemento().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
+               // return false;//Complemento errado
         return true;
         }
         
         public boolean validaBairro(){
             if(this.getBairro().length() > 100 || this.getBairro().length() < 5)
                 return false;//bairro errado
-            if(!this.getBairro().matches("[a-zA-Z]+ [a-zA-Z]+"))
-                return false;//bairro errado
+            //if(!this.getBairro().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
+                //return false;//bairro errado
         return true;
         }
         
         public boolean validaCidade(){
             if(this.getCidade().length() > 100 || this.getCidade().length() < 5)
                 return false;//Cidade errada
-            if(!this.getCidade().matches("[a-zA-Z]+ [a-zA-Z]+"))
-                return false;//Cidade errada
+            //if(!this.getCidade().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
+                //return false;//Cidade errada
         return true;
         }
         
@@ -150,8 +150,8 @@ public class Endereco {
         public boolean validaEstado(){
             if(this.getEstado().length() > 100 || this.getEstado().length() < 3)
                 return false;//estado errado
-            if(!this.getEstado().matches("[a-zA-Z]+ [a-zA-Z]+"))
-                return false;//estado errado
+            //if(!this.getEstado().matches("[a-zA-Z0]+([' ']?[a-zA-Z]+)*"))
+                //return false;//estado errado
             
             return true;
         }

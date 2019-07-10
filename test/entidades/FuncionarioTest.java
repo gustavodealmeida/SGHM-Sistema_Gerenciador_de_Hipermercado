@@ -38,11 +38,26 @@ public class FuncionarioTest {
     public void tearDown() {
     }
     
+    @Test
+    public void funcionarioConstrutor(){
 
-                    /*Testando Cargos válidos e inválidos*/
+        Funcionario f = new Funcionario("Anderson Felipe", "36390745800", null, "", "", "anderson@jesus.com", "1412345677", "m", "chefe", "11122233300");
+        try{
+            f.validaCampos();
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    /*Testando Cargos válidos e inválidos*/
     @Test
     public void cargoChefe(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("chefe");        
         f.setCNH("11122233300");
         f.setNome("Anderson Felipe");
@@ -56,6 +71,11 @@ public class FuncionarioTest {
     @Test
     public void cargoGerente() {
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("Gerente");
         f.setCNH("11122233300");
         f.setNome("Anderson Felipe");
@@ -69,6 +89,11 @@ public class FuncionarioTest {
     @Test
     public void cargoFuncionario(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("Funcionario");
         f.setCNH("11122233300");
         f.setNome("Anderson Felipe");
@@ -82,6 +107,11 @@ public class FuncionarioTest {
     @Test
     public void cargoInvalido(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("Estudante");
         f.setCNH("11122233300");
         try{
@@ -96,6 +126,11 @@ public class FuncionarioTest {
     @Test
     public void cnhInferior(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("Chefe");
         f.setCNH("1112223330");
         try{
@@ -108,6 +143,11 @@ public class FuncionarioTest {
     @Test
     public void cnhSuperior(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("Chefe");
         f.setCNH("11122233300Z");
         try{
@@ -120,6 +160,11 @@ public class FuncionarioTest {
     @Test
     public void cnhCaracterEspecial(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("chefe");
         f.setCNH("111222333xx");
         f.setNome("Anderson Felipe");
@@ -133,6 +178,11 @@ public class FuncionarioTest {
     @Test 
     public void cnhCorreta(){
         Funcionario f = new Funcionario();
+        f.setNome("Anderson Felipe");
+        f.setEmail("anderson@jesus.com");
+        f.setTelefone("1412345677");
+        f.setSexo("m");
+        f.setCPF("36390745800");
         f.setCargo("chefe");
         f.setCNH("11122233300");
         f.setNome("Anderson Felipe");

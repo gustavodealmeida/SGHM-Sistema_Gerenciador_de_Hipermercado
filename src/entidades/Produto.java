@@ -130,24 +130,24 @@ public class Produto {
     public boolean validaNome(){
         if(this.getNome().length() > 100 || this.getNome().length() < 3)
             return false;//Nome errado
-        if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
-            return false;//Nome errado
+        //if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            //return false;//Nome errado
         return true;
     }
     
     public boolean validaCategoria(){
         if(this.getCategoria().length() > 100 || this.getNome().length() < 3)
             return false;//Categoria errada
-        if(!this.getCategoria().matches("[a-zA-Z]+ [a-zA-Z]+"))
-            return false;//Categoria errada
+        //if(!this.getCategoria().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            //return false;//Categoria errada
         return true;
     }
     
     public boolean validaMarca(){
         if(this.getMarca().length() > 100 || this.getNome().length() < 1)
             return false;//Categoria errada
-        if(!this.getMarca().matches("[a-zA-Z]+ [a-zA-Z]+"))
-            return false;//Categoria errada
+        //if(!this.getMarca().matches("[a-zA-Z]+ [a-zA-Z]+"))
+            //return false;//Categoria errada
         return true;
     }
     
@@ -165,7 +165,7 @@ public class Produto {
     
     public boolean validaPreco(){
         if(this.getPreco() < 0.00)
-            return false;//Preço errado "vedendo" - PINTOOOOOOOOOO, Lucas do Prado (2019)
+            return false;//Preço errado
         return true;
     }
 }

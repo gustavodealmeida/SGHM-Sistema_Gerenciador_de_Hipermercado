@@ -1,5 +1,7 @@
 package entidades;
 
+import java.sql.Date;
+
 public class Funcionario extends Pessoa{
     
     private String cargo;
@@ -8,11 +10,13 @@ public class Funcionario extends Pessoa{
     
     //metodo construtor com e sem parametros
     public Funcionario(){
+        super();
         this.cargo = "";
         this.cnh = "";
     }
 
-    public Funcionario(String cargo, String cnh){
+    public Funcionario(String nome, String cpf, Date nasc,String docId, String tipoDocId, String email, String telefone, String sexo, String cargo, String cnh){
+        super(nome, cpf, nasc, docId, tipoDocId, email, telefone, sexo);
         this.cargo = cargo;
         this.cnh = cnh;    
     }
@@ -46,6 +50,7 @@ public class Funcionario extends Pessoa{
                 ////Validações*/
 
     public void validaCampos() throws Exception{
+        super.validaCampos();
         if(!validaCargo()){
             throw new Exception("Cargo Inválido");
         }
@@ -66,16 +71,5 @@ public class Funcionario extends Pessoa{
             return true;
         
         return false;
-    }
-    
-    public boolean validaNome(){
-        if(this.getNome().length() > 50 || this.getNome().length() < 3)
-            return false;//Nome errado
-        if(!this.getNome().matches("[a-zA-Z]+ [a-zA-Z]+"))
-            return false;//Nome errado
-        return true;
-    }
-                    
-    
-        
+    }    
 }

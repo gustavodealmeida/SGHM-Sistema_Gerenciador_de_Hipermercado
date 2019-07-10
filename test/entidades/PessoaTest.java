@@ -57,6 +57,17 @@ public class PessoaTest {
     }
     
     @Test
+    public void nomeConstrutor(){
+
+        Pessoa p = new Pessoa("Anderson Felipe", "36390745800", null, "", "", "anderson@jesus.com", "1412345677", "m");
+        try{
+            p.validaCampos();
+        }catch(Exception e){
+            fail();
+        }
+    }
+    
+    @Test
     public void nomeInferior(){
         Pessoa p = new Pessoa();
         p.setNome("ks");
@@ -127,17 +138,18 @@ public class PessoaTest {
     
                       /*Testando telefones válidos e inválidos*/
     @Test
-    public void telefoneCORRETO(){
+    public void telefoneINCORRETO(){
         Pessoa p = new Pessoa();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
-        p.setTelefone("014012541254");
+        p.setTelefone("00014012541254");
         p.setSexo("m");
         p.setCPF("36390745800");
         try{
             p.validaCampos();
-        }catch(Exception e){
             fail();
+        }catch(Exception e){
+            assertEquals(e.getMessage(), "Telefone Inválido");
         }
     }
     
