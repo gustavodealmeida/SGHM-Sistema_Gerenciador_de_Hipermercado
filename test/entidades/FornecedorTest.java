@@ -5,7 +5,7 @@
  */
 package entidades;
 
-import entidades.Pessoa;
+import entidades.Fornecedor;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,11 +17,10 @@ import java.util.*;
 
 /**
  *
- * @author Deco
+ * @author prado
  */
-public class PessoaTest {
-    
-    public PessoaTest() {
+public class FornecedorTest {
+    public FornecedorTest() {
     }
     
     @BeforeClass
@@ -44,12 +43,11 @@ public class PessoaTest {
     @Test
     public void nomeCORRETO(){
 
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("1412345677");
-        p.setSexo("m");
-        p.setCPF("36390745800");
+        p.setCNPJ("68475195000160");
         try{
             p.validaCampos();
         }catch(Exception e){
@@ -60,7 +58,7 @@ public class PessoaTest {
     @Test
     public void nomeConstrutor(){
 
-        Pessoa p = new Pessoa("Anderson Felipe", "36390745800", null, "", "", "anderson@jesus.com", "1412345677", "m");
+        Fornecedor p = new Fornecedor("Anderson Felipe", "68475195000160", "1412345677", "anderson@jesus.com", 50);
         try{
             p.validaCampos();
         }catch(Exception e){
@@ -70,7 +68,7 @@ public class PessoaTest {
     
     @Test
     public void nomeInferior(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("ks");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("1412345677");
@@ -83,7 +81,7 @@ public class PessoaTest {
       
     @Test
     public void nomeSuperior(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("anaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");       
         p.setEmail("anderson@jesus.com");
         p.setTelefone("1412345677");        
@@ -96,7 +94,7 @@ public class PessoaTest {
        
     @Test
     public void nomeCaracterEspecial(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("@nderson felipe"); 
         p.setEmail("anderson@jesus.com");
         p.setTelefone("1412345677");        
@@ -111,12 +109,11 @@ public class PessoaTest {
                         /*Testando Email válido e inválido*/
     @Test
     public void emailCORRETO(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("1234567777");
-        p.setSexo("m");
-        p.setCPF("36390745800");
+        p.setCNPJ("68475195000160");
         try{
             p.validaCampos();
         }catch(Exception e){
@@ -126,10 +123,11 @@ public class PessoaTest {
     
     @Test
     public void emailPequeno(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("@jesus.com");
-        p.setTelefone("1412345677");
+        p.setTelefone("1234567777");
+        p.setCNPJ("68475195000160");
         try{
             p.validaCampos();
         }catch(Exception e){
@@ -140,12 +138,11 @@ public class PessoaTest {
                       /*Testando telefones válidos e inválidos*/
     @Test
     public void telefoneINCORRETO(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("00014012541254");
-        p.setSexo("m");
-        p.setCPF("36390745800");
+        p.setCNPJ("68475195000160");
         try{
             p.validaCampos();
             fail();
@@ -156,7 +153,7 @@ public class PessoaTest {
     
     @Test
     public void telefoneCorreto1(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         
         p.setTelefone("91234567");
         
@@ -169,7 +166,7 @@ public class PessoaTest {
     
     @Test
     public void telefoneCorreto2(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         
         p.setTelefone("9123456789");
         
@@ -182,7 +179,7 @@ public class PessoaTest {
     
     @Test
     public void telefoneCorreto3(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         
         p.setTelefone("912345678999");
         
@@ -192,61 +189,14 @@ public class PessoaTest {
             fail();
         }
     }
-    
-                    /*Testando Sexo*/
-    @Test
-    public void sexoM(){
-        Pessoa p = new Pessoa();
-        p.setNome("Anderson Felipe");
-        p.setEmail("anderson@jesus.com");
-        p.setTelefone("1234567777");
-        p.setSexo("m");
-        p.setCPF("36390745800");
-        try{
-            p.validaCampos();
-        }catch(Exception e){
-           fail(); 
-        }
-    }
-    
-    @Test
-    public void sexoF(){
-        Pessoa p = new Pessoa();
-        p.setNome("Anderson Felipe");
-        p.setEmail("anderson@jesus.com");
-        p.setTelefone("1234567777");
-        p.setSexo("f");
-        p.setCPF("36390745800");        
-        try{
-            p.validaCampos();
-        }catch(Exception e){
-           fail(); 
-        }
-    }
-    
-    @Test
-    public void sexoInvalido(){
-        Pessoa p = new Pessoa();
-        p.setNome("Anderson Felipe");
-        p.setEmail("anderson@jesus.com");
-        p.setTelefone("1234567777");
-        p.setSexo("Z");
-        try{
-            p.validaCampos();
-            fail();
-        }catch(Exception e){
-            assertEquals(e.getMessage(), "Sexo Inválido");
-        }
-    }
 
     @Test
-    public void cpfValido(){
-        Pessoa p = new Pessoa();
+    public void cnpjValido(){
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("014012541254");
-        p.setSexo("m");
-        p.setCPF("36390745800");
+        p.setCNPJ("68475195000160");
         try{
             p.validaCampos();
         }catch(Exception e){
@@ -255,42 +205,36 @@ public class PessoaTest {
     }
     
     @Test
-    public void cpfInvalido(){
-        Pessoa p = new Pessoa();
+    public void cnpjInvalido(){
+        Fornecedor p = new Fornecedor();
         p.setNome("Anderson Felipe");
         p.setEmail("anderson@jesus.com");
         p.setTelefone("014012541254");
-        p.setSexo("m");
-        p.setCPF("363907458");
+        p.setCNPJ("68475670160");
         
         try{
             p.validaCampos();
         }catch(Exception e){
-            assertEquals(e.getMessage(), "CPF Inválido");
+            assertEquals(e.getMessage(), "CNPJ Inválido");
         }
     }
     
     @Test
     public void construtor(){
-        Pessoa p = new Pessoa();
+        Fornecedor p = new Fornecedor();
         
-        Date d = new Date();
-        String s, sT;
+        int i = 52;
 
-        p.setNasc(d);
-        p.setdocId("08530549910");
-        p.setTipoDocId("RG");        
+        p.setEnd_id(i);
+       
         
         try{
-            d = p.getNasc();
-            s = p.getdocId();
-            sT = p.getTipoDocId();
-            
+            assertEquals(p.getEnd_id(), 52);
         }catch(Exception e){
             fail();
         }
     }
     
-    
+ 
 
 }

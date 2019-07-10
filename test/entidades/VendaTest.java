@@ -201,7 +201,7 @@ public class VendaTest {
     public void cpfInvalido3(){
         Venda v = new Venda();
         
-        v.setCliente_cpf("3333333333");
+        v.setCliente_cpf("33333333333");
         
         try{
             assertFalse(v.validaCliente_Cpf());

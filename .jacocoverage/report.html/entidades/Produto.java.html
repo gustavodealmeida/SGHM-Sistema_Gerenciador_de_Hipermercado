@@ -27,16 +27,16 @@ public class Produto {
 <span class="fc" id="L27">    public Produto(){}</span>
     
     public Produto(String cod_barras, String nome, String categoria, String marca, 
-<span class="nc" id="L30">                    double massa, double custo_uni, double preco, int est_id){</span>
-<span class="nc" id="L31">        this.setCod_barras(cod_barras);</span>
-<span class="nc" id="L32">        this.setNome(nome);</span>
-<span class="nc" id="L33">        this.setCategoria(categoria);</span>
-<span class="nc" id="L34">        this.setMarca(marca);</span>
-<span class="nc" id="L35">        this.setMassa(massa);</span>
-<span class="nc" id="L36">        this.setCusto_uni(custo_uni);</span>
-<span class="nc" id="L37">        this.setPreco(preco);</span>
-<span class="nc" id="L38">        this.setEst_id(est_id);             </span>
-<span class="nc" id="L39">    }</span>
+<span class="fc" id="L30">                    double massa, double custo_uni, double preco, int est_id){</span>
+<span class="fc" id="L31">        this.setCod_barras(cod_barras);</span>
+<span class="fc" id="L32">        this.setNome(nome);</span>
+<span class="fc" id="L33">        this.setCategoria(categoria);</span>
+<span class="fc" id="L34">        this.setMarca(marca);</span>
+<span class="fc" id="L35">        this.setMassa(massa);</span>
+<span class="fc" id="L36">        this.setCusto_uni(custo_uni);</span>
+<span class="fc" id="L37">        this.setPreco(preco);</span>
+<span class="fc" id="L38">        this.setEst_id(est_id);             </span>
+<span class="fc" id="L39">    }</span>
 
     public String getCod_barras() {
 <span class="fc" id="L42">        return cod_barras;</span>
@@ -91,82 +91,65 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
-<span class="nc" id="L94">        this.preco = preco;</span>
-<span class="nc" id="L95">    }</span>
+<span class="fc" id="L94">        this.preco = preco;</span>
+<span class="fc" id="L95">    }</span>
 
     public int getEst_id() {
-<span class="nc" id="L98">        return est_id;</span>
+<span class="fc" id="L98">        return est_id;</span>
     }
 
     public void setEst_id(int est_id) {
-<span class="nc" id="L102">        this.est_id = est_id;</span>
-<span class="nc" id="L103">    }</span>
+<span class="fc" id="L102">        this.est_id = est_id;</span>
+<span class="fc" id="L103">    }</span>
     
-    public void validaCampos() throws Exception{
-<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        if(!validaCodBarras())</span>
-<span class="nc" id="L107">            throw new Exception(&quot;Código de Barras Inválido&quot;);</span>
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        if(!validaNome())</span>
-<span class="nc" id="L109">            throw new Exception(&quot;Nome Inválido&quot;);</span>
-<span class="pc bpc" id="L110" title="1 of 2 branches missed.">        if(!validaCategoria())</span>
-<span class="nc" id="L111">            throw new Exception(&quot;Categoria Inválida&quot;);</span>
-<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        if(!validaMarca())</span>
-<span class="nc" id="L113">            throw new Exception(&quot;Marca Inválida&quot;);</span>
-<span class="pc bpc" id="L114" title="1 of 2 branches missed.">        if(!validaMassa())</span>
-<span class="nc" id="L115">            throw new Exception(&quot;Massa Inválida&quot;);</span>
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        if(!validaCusto_uni())</span>
-<span class="nc" id="L117">            throw new Exception(&quot;Custo da Unidade Inválida&quot;);</span>
-<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        if(!validaPreco())</span>
-<span class="nc" id="L119">            throw new Exception(&quot;Preço Inválido&quot;);</span>
-<span class="fc" id="L120">    }</span>
-    
-    public boolean validaCodBarras(){
-<span class="pc bpc" id="L123" title="2 of 4 branches missed.">        if(this.getCod_barras().length() &gt; 50 || this.getNome().length() &lt; 5)</span>
-<span class="nc" id="L124">            return false;//Codigo de barras errado</span>
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">        if(!this.getCod_barras().matches(&quot;[0-9]{1,50}&quot;))</span>
-<span class="nc" id="L126">            return false;//Codigo de barras errado</span>
-<span class="fc" id="L127">        return true;</span>
+    public boolean validaCod_barras(){
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        return !(this.getCod_barras().length() &gt; 50 || </span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">                this.getCod_barras().length() &lt; 1);    </span>
     }
     
     public boolean validaNome(){
-<span class="pc bpc" id="L131" title="2 of 4 branches missed.">        if(this.getNome().length() &gt; 100 || this.getNome().length() &lt; 3)</span>
-<span class="nc" id="L132">            return false;//Nome errado</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        if(this.getNome().length() &gt; 50 || </span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">                this.getNome().length() &lt; 3)</span>
+<span class="fc" id="L113">            return false;//Nome errado</span>
         //if(!this.getNome().matches(&quot;[a-zA-Z]+ [a-zA-Z]+&quot;))
             //return false;//Nome errado
-<span class="fc" id="L135">        return true;</span>
+<span class="fc" id="L116">        return true;</span>
     }
     
     public boolean validaCategoria(){
-<span class="pc bpc" id="L139" title="2 of 4 branches missed.">        if(this.getCategoria().length() &gt; 100 || this.getNome().length() &lt; 3)</span>
-<span class="nc" id="L140">            return false;//Categoria errada</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if(this.getCategoria().length() &gt; 50 || </span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                this.getCategoria().length() &lt; 3)</span>
+<span class="fc" id="L122">            return false;//Categoria errada</span>
         //if(!this.getCategoria().matches(&quot;[a-zA-Z]+ [a-zA-Z]+&quot;))
             //return false;//Categoria errada
-<span class="fc" id="L143">        return true;</span>
+<span class="fc" id="L125">        return true;</span>
     }
     
     public boolean validaMarca(){
-<span class="pc bpc" id="L147" title="2 of 4 branches missed.">        if(this.getMarca().length() &gt; 100 || this.getNome().length() &lt; 1)</span>
-<span class="nc" id="L148">            return false;//Categoria errada</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if(this.getMarca().length() &gt; 50 || </span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">                this.getMarca().length() &lt; 2)</span>
+<span class="fc" id="L131">            return false;//Categoria errada</span>
         //if(!this.getMarca().matches(&quot;[a-zA-Z]+ [a-zA-Z]+&quot;))
             //return false;//Categoria errada
-<span class="fc" id="L151">        return true;</span>
+<span class="fc" id="L134">        return true;</span>
     }
     
     public boolean validaMassa(){
-<span class="pc bpc" id="L155" title="1 of 2 branches missed.">        if(this.getMassa() &lt; 0.00)</span>
-<span class="nc" id="L156">            return false;//Massa errada</span>
-<span class="fc" id="L157">        return true;</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        if(this.getMassa() &lt; 0.00)</span>
+<span class="fc" id="L139">            return false;//Massa errada</span>
+<span class="fc" id="L140">        return true;</span>
     }
     
     public boolean validaCusto_uni(){
-<span class="pc bpc" id="L161" title="1 of 2 branches missed.">        if(this.getCusto_uni() &lt; 0.00)</span>
-<span class="nc" id="L162">            return false;//Custo da unidade errada</span>
-<span class="fc" id="L163">        return true;</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if(this.getCusto_uni() &lt; 0.00)</span>
+<span class="fc" id="L145">            return false;//Custo da unidade errada</span>
+<span class="fc" id="L146">        return true;</span>
     }
     
     public boolean validaPreco(){
-<span class="pc bpc" id="L167" title="1 of 2 branches missed.">        if(this.getPreco() &lt; 0.00)</span>
-<span class="nc" id="L168">            return false;//Preço errado</span>
-<span class="fc" id="L169">        return true;</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        if(this.getPreco() &lt; 0.00)</span>
+<span class="fc" id="L151">            return false;//Preço errado</span>
+<span class="fc" id="L152">        return true;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

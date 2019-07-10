@@ -109,7 +109,8 @@ public class Endereco {
     }
         
 	public boolean validaRua(){
-            if(this.getRua().length() > 255 || this.getRua().length() < 5)
+            if(this.getRua().length() > 50 || 
+                    this.getRua().length() < 5)
                 return false;//Rua errada
             //if(!this.getRua().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
                 //return false;//Rua errada
@@ -117,7 +118,8 @@ public class Endereco {
         }
         
         public boolean validaComplemento(){
-            if(this.getComplemento().length() > 100 || this.getComplemento().length() < 5)
+            if(this.getComplemento().length() > 50 || 
+                    this.getComplemento().length() < 5)
                 return false;//Complemento errado
             //if(!this.getComplemento().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
                // return false;//Complemento errado
@@ -125,7 +127,8 @@ public class Endereco {
         }
         
         public boolean validaBairro(){
-            if(this.getBairro().length() > 100 || this.getBairro().length() < 5)
+            if(this.getBairro().length() > 50 || 
+                    this.getBairro().length() < 5)
                 return false;//bairro errado
             //if(!this.getBairro().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
                 //return false;//bairro errado
@@ -133,7 +136,8 @@ public class Endereco {
         }
         
         public boolean validaCidade(){
-            if(this.getCidade().length() > 100 || this.getCidade().length() < 5)
+            if(this.getCidade().length() > 50 || 
+                    this.getCidade().length() < 5)
                 return false;//Cidade errada
             //if(!this.getCidade().matches("[a-zA-Z]+([' ']?[a-zA-Z]+)*"))
                 //return false;//Cidade errada
@@ -148,7 +152,8 @@ public class Endereco {
         }
         
         public boolean validaEstado(){
-            if(this.getEstado().length() > 100 || this.getEstado().length() < 3)
+            if(this.getEstado().length() > 50 || 
+                    this.getEstado().length() < 3)
                 return false;//estado errado
             //if(!this.getEstado().matches("[a-zA-Z0]+([' ']?[a-zA-Z]+)*"))
                 //return false;//estado errado

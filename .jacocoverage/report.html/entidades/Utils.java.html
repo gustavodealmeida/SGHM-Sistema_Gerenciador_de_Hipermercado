@@ -5,119 +5,106 @@
  */
 package entidades;
 
+import static java.lang.System.console;
 import java.util.InputMismatchException;
 
 /**
  *
  * @author prado
  */
-<span class="fc" id="L14">public class Utils {</span>
+<span class="fc" id="L15">public class Utils {</span>
     public boolean validaCPF(String CPF){
-<span class="fc bfc" id="L16" title="All 4 branches covered.">    if (CPF.equals(&quot;00000000000&quot;) || CPF.equals(&quot;11111111111&quot;) ||</span>
-<span class="pc bpc" id="L17" title="1 of 4 branches missed.">            CPF.equals(&quot;22222222222&quot;) || CPF.equals(&quot;33333333333&quot;) ||</span>
-<span class="fc bfc" id="L18" title="All 4 branches covered.">            CPF.equals(&quot;44444444444&quot;) || CPF.equals(&quot;55555555555&quot;) ||</span>
-<span class="pc bpc" id="L19" title="1 of 4 branches missed.">            CPF.equals(&quot;66666666666&quot;) || CPF.equals(&quot;77777777777&quot;) ||</span>
-<span class="pc bpc" id="L20" title="1 of 4 branches missed.">            CPF.equals(&quot;88888888888&quot;) || CPF.equals(&quot;99999999999&quot;) ||</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">            (CPF.length() != 11))</span>
-<span class="fc" id="L22">        return(false);</span>
+<span class="fc bfc" id="L17" title="All 4 branches covered.">    if (CPF.equals(&quot;00000000000&quot;) || CPF.equals(&quot;11111111111&quot;) ||</span>
+<span class="fc bfc" id="L18" title="All 4 branches covered.">            CPF.equals(&quot;22222222222&quot;) || CPF.equals(&quot;33333333333&quot;) ||</span>
+<span class="fc bfc" id="L19" title="All 4 branches covered.">            CPF.equals(&quot;44444444444&quot;) || CPF.equals(&quot;55555555555&quot;) ||</span>
+<span class="fc bfc" id="L20" title="All 4 branches covered.">            CPF.equals(&quot;66666666666&quot;) || CPF.equals(&quot;77777777777&quot;) ||</span>
+<span class="fc bfc" id="L21" title="All 4 branches covered.">            CPF.equals(&quot;88888888888&quot;) || CPF.equals(&quot;99999999999&quot;) ||</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            (CPF.length() != 11))</span>
+<span class="fc" id="L23">        return(false);</span>
     char dig10, dig11;
     int sm, i, r, num, peso;
- //   try {
-<span class="fc" id="L26">        sm = 0;</span>
-<span class="fc" id="L27">        peso = 10;</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (i=0; i&lt;9; i++) {</span>
-<span class="fc" id="L29">            num = (int)(CPF.charAt(i) - 48);</span>
-<span class="fc" id="L30">            sm = sm + (num * peso);</span>
-<span class="fc" id="L31">            peso = peso - 1;</span>
-        }
-<span class="fc" id="L33">        r = 11 - (sm % 11);</span>
-<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        if ((r == 10) || (r == 11)) {</span>
-<span class="fc" id="L35">            dig10 = '0';</span>
-        }else {
-<span class="fc" id="L37">            dig10 = (char)(r + 48);</span>
-        }
-<span class="fc" id="L39">        sm = 0;</span>
-<span class="fc" id="L40">        peso = 11;</span>
-<span class="fc bfc" id="L41" title="All 2 branches covered.">        for(i=0; i&lt;10; i++) {</span>
-<span class="fc" id="L42">            num = (int)(CPF.charAt(i) - 48);</span>
-<span class="fc" id="L43">            sm = sm + (num * peso);</span>
-<span class="fc" id="L44">            peso = peso - 1;</span>
-        }
-<span class="fc" id="L46">        r = 11 - (sm % 11);</span>
-<span class="pc bpc" id="L47" title="2 of 4 branches missed.">        if ((r == 10) || (r == 11)) {</span>
-<span class="fc" id="L48">            dig11 = '0';</span>
-        } else {
-<span class="nc" id="L50">            dig11 = (char)(r + 48);</span>
-        }
-<span class="pc bpc" id="L52" title="1 of 4 branches missed.">        if ((dig10 == CPF.charAt(9)) &amp;&amp; (dig11 == CPF.charAt(10))) {</span>
-<span class="fc" id="L53">            return(true);</span>
-        } else {
-<span class="fc" id="L55">            return(false);</span>
-        }
-   // }catch (InputMismatchException erro) {
-   //     return(false);
-   // }
+
+<span class="fc" id="L27">    sm = 0;</span>
+<span class="fc" id="L28">    peso = 10;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    for (i=0; i&lt;9; i++) {</span>
+<span class="fc" id="L30">        num = (int)(CPF.charAt(i) - 48);</span>
+<span class="fc" id="L31">        sm = sm + (num * peso);</span>
+<span class="fc" id="L32">        peso = peso - 1;</span>
+    }
+<span class="fc" id="L34">    r = 11 - (sm % 11);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">    if (r == 11) {</span>
+<span class="fc" id="L36">        dig10 = '0';</span>
+    }else {
+<span class="fc" id="L38">        dig10 = (char)(r + 48);</span>
+    }
+<span class="fc" id="L40">    sm = 0;</span>
+<span class="fc" id="L41">    peso = 11;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    for(i=0; i&lt;10; i++) {</span>
+<span class="fc" id="L43">        num = (int)(CPF.charAt(i) - 48);</span>
+<span class="fc" id="L44">        sm = sm + (num * peso);</span>
+<span class="fc" id="L45">        peso = peso - 1;</span>
+    }
+<span class="fc" id="L47">    r = 11 - (sm % 11);</span>
+<span class="fc" id="L48">    dig11 = '0';</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if ((dig10 == CPF.charAt(9))){</span>
+<span class="fc" id="L50">        return(true);</span>
+    } else {
+<span class="fc" id="L52">        return(false);</span>
+    }
+
     }
     
    public boolean validaCnpj(String CNPJ){
-<span class="fc bfc" id="L63" title="All 4 branches covered.">        if (CNPJ.equals(&quot;00000000000000&quot;) || CNPJ.equals(&quot;11111111111111&quot;) ||</span>
-<span class="fc bfc" id="L64" title="All 4 branches covered.">            CNPJ.equals(&quot;22222222222222&quot;) || CNPJ.equals(&quot;33333333333333&quot;) ||</span>
-<span class="fc bfc" id="L65" title="All 4 branches covered.">            CNPJ.equals(&quot;44444444444444&quot;) || CNPJ.equals(&quot;55555555555555&quot;) ||</span>
-<span class="pc bpc" id="L66" title="1 of 4 branches missed.">            CNPJ.equals(&quot;66666666666666&quot;) || CNPJ.equals(&quot;77777777777777&quot;) ||</span>
-<span class="pc bpc" id="L67" title="1 of 4 branches missed.">            CNPJ.equals(&quot;88888888888888&quot;) || CNPJ.equals(&quot;99999999999999&quot;) ||</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">            CNPJ.length() != 14)</span>
-<span class="fc" id="L69">            return(false);</span>
+<span class="fc bfc" id="L58" title="All 4 branches covered.">        if (CNPJ.equals(&quot;00000000000000&quot;) || CNPJ.equals(&quot;11111111111111&quot;) ||</span>
+<span class="fc bfc" id="L59" title="All 4 branches covered.">            CNPJ.equals(&quot;22222222222222&quot;) || CNPJ.equals(&quot;33333333333333&quot;) ||</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">            CNPJ.equals(&quot;44444444444444&quot;) || CNPJ.equals(&quot;55555555555555&quot;) ||</span>
+<span class="fc bfc" id="L61" title="All 4 branches covered.">            CNPJ.equals(&quot;66666666666666&quot;) || CNPJ.equals(&quot;77777777777777&quot;) ||</span>
+<span class="fc bfc" id="L62" title="All 4 branches covered.">            CNPJ.equals(&quot;88888888888888&quot;) || CNPJ.equals(&quot;99999999999999&quot;) ||</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            CNPJ.length() != 14)</span>
+<span class="fc" id="L64">            return(false);</span>
 
         char dig13, dig14;
         int sm, i, r, num, peso;
 
-        //try {
+<span class="fc" id="L69">        sm = 0;</span>
+<span class="fc" id="L70">        peso = 2;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (i=11; i&gt;=0; i--) {</span>
+<span class="fc" id="L72">            num = (int)(CNPJ.charAt(i) - 48);</span>
+<span class="fc" id="L73">            sm = sm + (num * peso);</span>
+<span class="fc" id="L74">            peso = peso + 1;</span>
 
-<span class="fc" id="L76">            sm = 0;</span>
-<span class="fc" id="L77">            peso = 2;</span>
-<span class="fc bfc" id="L78" title="All 2 branches covered.">            for (i=11; i&gt;=0; i--) {</span>
-<span class="fc" id="L79">                num = (int)(CNPJ.charAt(i) - 48);</span>
-<span class="fc" id="L80">                sm = sm + (num * peso);</span>
-<span class="fc" id="L81">                peso = peso + 1;</span>
-                
-<span class="fc bfc" id="L83" title="All 2 branches covered.">                if (peso == 10)</span>
-<span class="fc" id="L84">                    peso = 2;</span>
-            }
+<span class="fc bfc" id="L76" title="All 2 branches covered.">            if (peso == 10)</span>
+<span class="fc" id="L77">                peso = 2;</span>
+        }
 
-<span class="fc" id="L87">            r = sm % 11;</span>
-            
-<span class="pc bpc" id="L89" title="2 of 4 branches missed.">            if ((r == 0) || (r == 1))</span>
-<span class="fc" id="L90">                dig13 = '0';</span>
-            
-<span class="nc" id="L92">            else dig13 = (char)((11-r) + 48);</span>
+<span class="fc" id="L80">        r = sm % 11;</span>
 
-<span class="fc" id="L94">            sm = 0;</span>
-<span class="fc" id="L95">            peso = 2;</span>
-            
-<span class="fc bfc" id="L97" title="All 2 branches covered.">            for (i=12; i&gt;=0; i--) {</span>
-<span class="fc" id="L98">                num = (int)(CNPJ.charAt(i)- 48);</span>
-<span class="fc" id="L99">                sm = sm + (num * peso);</span>
-<span class="fc" id="L100">                peso = peso + 1;</span>
-                
-<span class="fc bfc" id="L102" title="All 2 branches covered.">                if (peso == 10)</span>
-<span class="fc" id="L103">                    peso = 2;</span>
-            }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if ((r == 1))</span>
+<span class="fc" id="L83">            dig13 = '0';</span>
 
-<span class="fc" id="L106">            r = sm % 11;</span>
-            
-<span class="pc bpc" id="L108" title="2 of 4 branches missed.">            if ((r == 0) || (r == 1))</span>
-<span class="nc" id="L109">                dig14 = '0';</span>
-            
-<span class="fc" id="L111">            else dig14 = (char)((11-r) + 48);</span>
+<span class="fc" id="L85">        else dig13 = (char)((11-r) + 48);</span>
 
-<span class="pc bpc" id="L113" title="2 of 4 branches missed.">            if ((dig13 == CNPJ.charAt(12)) &amp;&amp; (dig14 == CNPJ.charAt(13)))</span>
-<span class="fc" id="L114">                return(true);</span>
-            
-<span class="nc" id="L116">            else return(false);</span>
+<span class="fc" id="L87">        sm = 0;</span>
+<span class="fc" id="L88">        peso = 2;</span>
+
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (i=12; i&gt;=0; i--) {</span>
+<span class="fc" id="L91">            num = (int)(CNPJ.charAt(i)- 48);</span>
+<span class="fc" id="L92">            sm = sm + (num * peso);</span>
+<span class="fc" id="L93">            peso = peso + 1;</span>
+
+<span class="fc bfc" id="L95" title="All 2 branches covered.">            if (peso == 10)</span>
+<span class="fc" id="L96">                peso = 2;</span>
+        }
+
+<span class="fc" id="L99">        r = sm % 11;</span>
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if ((r == 1))</span>
+<span class="fc" id="L102">            dig14 = '0';</span>
+
+<span class="fc" id="L104">        else dig14 = (char)((11-r) + 48);</span>
+
+<span class="fc" id="L106">        return(true);</span>
         
-       // } catch (InputMismatchException erro) {
-       //     return(false);
-        //}
     }  
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

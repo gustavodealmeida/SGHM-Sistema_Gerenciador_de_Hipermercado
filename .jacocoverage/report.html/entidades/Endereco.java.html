@@ -37,11 +37,11 @@ public class Endereco {
 	
 	//Getters e Setters
 	public int getId() {
-<span class="nc" id="L40">		return id;</span>
+<span class="fc" id="L40">		return id;</span>
 	}
 	public void setId(int id) {
-<span class="nc" id="L43">		this.id = id;</span>
-<span class="nc" id="L44">	}</span>
+<span class="fc" id="L43">		this.id = id;</span>
+<span class="fc" id="L44">	}</span>
 
 	public String getRua() {
 <span class="fc" id="L47">		return rua;</span>
@@ -109,58 +109,63 @@ public class Endereco {
 <span class="fc" id="L109">    }</span>
         
 	public boolean validaRua(){
-<span class="pc bpc" id="L112" title="1 of 4 branches missed.">            if(this.getRua().length() &gt; 255 || this.getRua().length() &lt; 5)</span>
-<span class="fc" id="L113">                return false;//Rua errada</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            if(this.getRua().length() &gt; 50 || </span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">                    this.getRua().length() &lt; 5)</span>
+<span class="fc" id="L114">                return false;//Rua errada</span>
             //if(!this.getRua().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
                 //return false;//Rua errada
-<span class="fc" id="L116">        return true;</span>
+<span class="fc" id="L117">        return true;</span>
         }
         
         public boolean validaComplemento(){
-<span class="pc bpc" id="L120" title="1 of 4 branches missed.">            if(this.getComplemento().length() &gt; 100 || this.getComplemento().length() &lt; 5)</span>
-<span class="fc" id="L121">                return false;//Complemento errado</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">            if(this.getComplemento().length() &gt; 50 || </span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">                    this.getComplemento().length() &lt; 5)</span>
+<span class="fc" id="L123">                return false;//Complemento errado</span>
             //if(!this.getComplemento().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
                // return false;//Complemento errado
-<span class="fc" id="L124">        return true;</span>
+<span class="fc" id="L126">        return true;</span>
         }
         
         public boolean validaBairro(){
-<span class="pc bpc" id="L128" title="1 of 4 branches missed.">            if(this.getBairro().length() &gt; 100 || this.getBairro().length() &lt; 5)</span>
-<span class="fc" id="L129">                return false;//bairro errado</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">            if(this.getBairro().length() &gt; 50 || </span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                    this.getBairro().length() &lt; 5)</span>
+<span class="fc" id="L132">                return false;//bairro errado</span>
             //if(!this.getBairro().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
                 //return false;//bairro errado
-<span class="fc" id="L132">        return true;</span>
+<span class="fc" id="L135">        return true;</span>
         }
         
         public boolean validaCidade(){
-<span class="pc bpc" id="L136" title="1 of 4 branches missed.">            if(this.getCidade().length() &gt; 100 || this.getCidade().length() &lt; 5)</span>
-<span class="fc" id="L137">                return false;//Cidade errada</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">            if(this.getCidade().length() &gt; 50 || </span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">                    this.getCidade().length() &lt; 5)</span>
+<span class="fc" id="L141">                return false;//Cidade errada</span>
             //if(!this.getCidade().matches(&quot;[a-zA-Z]+([' ']?[a-zA-Z]+)*&quot;))
                 //return false;//Cidade errada
-<span class="fc" id="L140">        return true;</span>
+<span class="fc" id="L144">        return true;</span>
         }
         
         public boolean validaNumero(){
-<span class="fc bfc" id="L144" title="All 2 branches covered.">            if(this.getNumero() &lt;= 0)</span>
-<span class="fc" id="L145">                return false;//numero incorreto</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">            if(this.getNumero() &lt;= 0)</span>
+<span class="fc" id="L149">                return false;//numero incorreto</span>
             
-<span class="fc" id="L147">            return true;</span>
+<span class="fc" id="L151">            return true;</span>
         }
         
         public boolean validaEstado(){
-<span class="pc bpc" id="L151" title="1 of 4 branches missed.">            if(this.getEstado().length() &gt; 100 || this.getEstado().length() &lt; 3)</span>
-<span class="fc" id="L152">                return false;//estado errado</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">            if(this.getEstado().length() &gt; 50 || </span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">                    this.getEstado().length() &lt; 3)</span>
+<span class="fc" id="L157">                return false;//estado errado</span>
             //if(!this.getEstado().matches(&quot;[a-zA-Z0]+([' ']?[a-zA-Z]+)*&quot;))
                 //return false;//estado errado
             
-<span class="fc" id="L156">            return true;</span>
+<span class="fc" id="L161">            return true;</span>
         }
         
         public boolean validaCep(){
-<span class="fc bfc" id="L160" title="All 2 branches covered.">            if(!this.getCep().matches(&quot;[0-9]{8}&quot;))</span>
-<span class="fc" id="L161">                return false;//cep errado</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            if(!this.getCep().matches(&quot;[0-9]{8}&quot;))</span>
+<span class="fc" id="L166">                return false;//cep errado</span>
            
-<span class="fc" id="L163">            return true;</span>
+<span class="fc" id="L168">            return true;</span>
         }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
