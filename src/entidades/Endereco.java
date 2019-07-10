@@ -2,12 +2,9 @@ package entidades;
 
 public class Endereco {
 	
-	private int id;
-	
+	private static int id = 1;
 	private String rua;
-	
         private int numero;
-	
 	private String complemento;
 	
 	private String bairro;
@@ -24,7 +21,7 @@ public class Endereco {
     //Construtor com polimorfismo
     public Endereco(String rua, int numero, String complemento, String bairro, String cidade,
 			String estado, String cep) {
-			
+			this.setId();
 			this.setRua(rua);
 			this.setNumero(numero);
 			this.setComplemento(complemento);
@@ -39,8 +36,10 @@ public class Endereco {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId() {
+                
+		this.id = Endereco.id;
+                
 	}
 
 	public String getRua() {

@@ -59,6 +59,7 @@ public class EnderecoWindow extends JFrame {
                                         List<Endereco> endList = new ArrayList<Endereco>();
                                         
                                         Endereco end = new Endereco();
+                                        end.setId();
                                         end.setRua("Alberto Carazzai");
                                         end.setBairro("Centro");
                                         end.setCep("12345678");
@@ -222,6 +223,7 @@ public class EnderecoWindow extends JFrame {
 	// Operacoes do CRUD
 	private void create(){
                 Endereco end = new Endereco();
+                end.setId();
 		end.setRua(txtRua.getText());
 		end.setNumero(Integer.parseInt(txtNumero.getText()));
 		end.setBairro(txtBairro.getText());

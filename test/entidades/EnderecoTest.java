@@ -70,7 +70,7 @@ public class EnderecoTest {
     public void construtor(){
         Endereco e = new Endereco();
         
-        e.setId(4525);
+        e.setId();
         
         try{
             int i = e.getId();
